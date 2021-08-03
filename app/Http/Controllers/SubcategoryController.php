@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Subcategory;
 use Illuminate\Http\Request;
 
+use App\Category;
+
 class SubcategoryController extends Controller
 {
     /**
@@ -14,7 +16,8 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subcategories = Subcategory::all();
+        return view('backend.subcategory.index',compact('subcategories'));
     }
 
     /**
@@ -24,7 +27,8 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('backend.subcategory.create',compact('categories'));
     }
 
     /**
@@ -35,7 +39,23 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $request->validate([
+            "name" => "required|unique:subcategories|max:191",
+            // filter only category table id validation rule (try yourself)
+            "category" => "required"
+        ]);
+
+        // upload file
+
+        // data insert
+        $subcategory = new Subcategory; // create new object
+        $subcategory->name = $request->name;
+        $subcategory->category_id = $request->category;
+        $subcategory->save();
+
+        // redirect
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -57,7 +77,8 @@ class SubcategoryController extends Controller
      */
     public function edit(Subcategory $subcategory)
     {
-        //
+        $categories = Category::all();
+        return view('backend.subcategory.edit',compact('categories','subcategory'));
     }
 
     /**
@@ -69,7 +90,19 @@ class SubcategoryController extends Controller
      */
     public function update(Request $request, Subcategory $subcategory)
     {
-        //
+        $request->validate([
+            "name" => "required|unique:categories|max:191",
+            // filter only category table id validation rule (try yourself)
+            "category" => "required"
+        ]);
+
+        // data insert
+        $subcategory->name = $request->name;
+        $subcategory->category_id = $request->category;
+        $subcategory->save();
+
+        // redirect
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -80,6 +113,9 @@ class SubcategoryController extends Controller
      */
     public function destroy(Subcategory $subcategory)
     {
-        //
+         $subcategory->delete();
+
+        // redirect
+        return redirect()->route('subcategory.index');
     }
 }

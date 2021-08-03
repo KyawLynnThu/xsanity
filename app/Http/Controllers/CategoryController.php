@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        return view('backend.category.index',compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.category.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name"=>"required|unique:categories|max:191|min:5",
+        ]);
+
+        //data insert
+        $category = new Category; // create new object
+        $category->name = $request->name;
+        
+        $category->save();
+
+        // redirect
+        return redirect()->route('category.index');
     }
 
     /**
@@ -57,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend.category.edit',compact('category'));
     }
 
     /**
@@ -69,7 +81,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            "name" => "required|max:191|min:5",
+        ]);
+        
+        // data update
+        $category->name = $request->name;
+        $category->save();
+
+        // redirect
+        return redirect()->route('category.index');
+
     }
 
     /**
@@ -80,6 +102,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        // if ON DELETE (CASCADE)
+        foreach ($category->subcategories as $subcategory) {
+            $subcategory->delete();
+        }
+
+        // redirect
+        return redirect()->route('category.index');
     }
 }
