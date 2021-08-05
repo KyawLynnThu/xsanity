@@ -52,7 +52,7 @@
                     <tr>
                       <td>{{$i++}}</td>
                       <td>
-                        <img src="{{asset('storage/'.$item->photo)}}" alt="photo" style="width: 100px; height: 100px;" align="left">
+                        <img src="{{asset('storage/'.$item->photo)}}" alt="photo" style="width: 100px; height: 90px;" align="left">
                         <b>{{$item->name}}</b><br>
                         <span>Code No:{{$item->codeno}}</span>
                       </td>
@@ -80,17 +80,6 @@
                     </tr>
                     @endforeach
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th>Product</th>
-                    <th>Rate</th>
-                    <th>Price</th>
-                    <th>Release Year</th>
-                    <th>Type</th>
-                    <th>Action</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->

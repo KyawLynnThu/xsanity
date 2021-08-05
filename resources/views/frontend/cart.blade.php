@@ -23,7 +23,6 @@
 							<th>Product</th>
 							<th>Quality</th>
 							<th>Product Name</th>
-						
 							<th>Price</th>
 							<th>Remove</th>
 						</tr>
@@ -40,7 +39,7 @@
 								</div>
 							</div>
 						</td>
-						<td class="invert">Tata Salt</td>
+						<td class="invert"></td>
 						
 						<td class="invert">$290.00</td>
 						<td class="invert">
