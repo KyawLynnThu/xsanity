@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -45,7 +47,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="agile-login">
 				<ul>
 					<li><a href="registered.html"> Create Account </a></li>
-					<li><a href="login.html">Login</a></li>
+					<li><a> <span class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span></a></li>
+					<li><a href="{{route('login')}}">Login</a></li>
+					<li>
+						 <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                		@csrf
+                			<input type="submit" class="btn btn-primary" name="logout" value="Logout">
+                		</form>
+
+						
 					<li><a href="contact.html">Help</a></li>
 					
 				</ul>
@@ -212,6 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 	@yield('content')
+	</body>
 <!-- //footer -->
 <div class="footer">
 		<div class="container">
