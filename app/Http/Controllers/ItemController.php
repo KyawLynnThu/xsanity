@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Subcategory;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -14,7 +15,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::all();
+        return view('backend.item.index',compact('items'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        $subcategories = Subcategory::all();
+        return view('backend.item.create', compact('subcategories'));
     }
 
     /**
@@ -35,7 +38,42 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validation
+        $request->validate([
+            "name" => "required|unique:categories|max:191|min:5",
+            "code" => "required",
+            "photo" => "required|mimes:jpeg,jpg,png",
+            "price" => "required",
+            "description" => "required",
+            "release_year" => "required",
+            "subcategory" => "required"
+        ]);
+
+        // upload file
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('itemimg', $fileName, 'public');
+        }
+
+        // data insert
+        $item = new Item; // create new object
+        $item->name = $request->name;
+        $item->codeno = $request->code;
+        $item->photo = $filePath;
+        $item->rate = $request->rate;
+        $item->price = $request->price;
+        $item->discount = $request->discount;
+        $item->details = $request->detail;
+        $item->description = $request->description;
+        $item->release_year = $request->release_year;
+        $item->subcategory_id = $request->subcategory;
+        $item->save();
+
+        // redirect
+        return redirect()->route('item.index');
     }
 
     /**
@@ -57,7 +95,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        $subcategories = Subcategory::all();
+        return view('backend.item.edit',compact('subcategories','item'));
     }
 
     /**
@@ -69,7 +108,46 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        //
+        // validation
+       $request->validate([
+            "name" => "required|unique:categories|max:191|min:5",
+            "code" => "required",
+            "photo" => "required|mimes:jpeg,jpg,png",
+            "price" => "required",
+            "description" => "required",
+            "release_year" => "required",
+            "subcategory" => "required"
+        ]);
+
+
+        // upload file
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('itemimg', $fileName, 'public');
+
+            // unlink(public_path().$item->photo);
+        }else{
+            $filePath = $item->photo;
+        }
+
+        // data insert
+        $item->name = $request->name;
+        $item->codeno = $request->code;
+        $item->photo = $filePath;
+        $item->rate = $request->rate;
+        $item->price = $request->price;
+        $item->discount = $request->discount;
+        $item->details = $request->detail;
+        $item->description = $request->description;
+        $item->release_year = $request->release_year;
+        $item->subcategory_id = $request->subcategory;
+        $item->save();
+
+        // redirect
+        return redirect()->route('item.index');
     }
 
     /**
@@ -80,6 +158,9 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        // redirect
+        return redirect()->route('item.index');
     }
 }

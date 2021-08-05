@@ -13,7 +13,7 @@
 
       <div class="card-body">
         {{-- Change Error Message UI (try yourself) --}}
-        <form method="post" action="{{route('subcategory.store')}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('subcategory.store')}}">
           @csrf
           <div class="row mb-3">
             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
