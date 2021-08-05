@@ -296,6 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //footer -->	
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('frontend_assets/js/bootstrap.min.js')}}"></script>
+@yield('script')
 
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
@@ -315,7 +316,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="{{asset('frontend_assets/js/minicart.min.js')}}"></script>
+{{-- <script src="{{asset('frontend_assets/js/minicart.min.js')}}"></script>
 <script>
 	// Mini Cart
 	paypal.minicart.render({
@@ -325,7 +326,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	if (~window.location.search.indexOf('reset=true')) {
 		paypal.minicart.reset();
 	}
-</script>
+</script> --}}
 <!-- main slider-banner -->
 <script src="{{asset('frontend_assets/js/skdslider.min.js')}}"></script>
 <link href="{{asset('frontend_assets/css/skdslider.css')}}" rel="stylesheet">
@@ -339,6 +340,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 		});
 </script>	
+
+
 <!-- //main slider-banner --> 
 </body>
 </html>
