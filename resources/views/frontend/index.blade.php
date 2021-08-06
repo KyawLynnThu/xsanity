@@ -135,7 +135,7 @@
 									                          }
 									                        @endphp
 														</div>
-														<div class="snipcart-details top_brand_home_details">
+														{{-- <div class="snipcart-details top_brand_home_details">
 															<form action="#" method="post">
 																<fieldset>
 																	<input type="hidden" name="cmd" value="_cart" />
@@ -147,9 +147,13 @@
 																	<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
 																	<input type="hidden" name="cancel_return" value=" " />
-																	<input type="submit" name="submit" value="Add to cart" class="button" />
+																	<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" />
 																</fieldset>
 															</form>
+														</div> --}}
+														<div class="snipcart-details top_brand_home_details"><a href="{{route('cartpage')}}">
+															<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
+
 														</div>
 													</div>
 												</figure>
@@ -508,6 +512,15 @@
 						<div class="clearfix"></div>
 					</div>
 				</div>
+<<<<<<< HEAD
 <!--banner-bottom-->
 
+=======
+		</div>
+	</div>
+<!-- //new -->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
+>>>>>>> a24da1e3afcce8cb06741b05e98ed8e8e3250cd7
 @endsection

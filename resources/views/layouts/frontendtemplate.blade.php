@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -44,8 +46,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="agile-login">
 				<ul>
-					<li><a href="{{route('registerpage')}}"> Create Account </a></li>
+					{{-- <li><a href="{{route('registerpage')}}"> Create Account </a></li>
+					<li><a> <span class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span></a></li>
 					<li><a href="{{route('loginpage')}}">Login</a></li>
+					<li>
+						 <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                		@csrf
+                			<input type="submit" class="btn btn-primary" name="logout" value="Logout">
+                		</form>
+                	</li> --}}
 					<li><a href="{{route('contactpage')}}">Help</a></li>
 					
 				</ul>
@@ -137,6 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 	@yield('content')
+	</body>
 <!-- //footer -->
 <div class="footer">
 		<div class="container">
@@ -172,11 +182,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Profile</h3>
-					<ul class="info"> 
+					{{-- <ul class="info"> 
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('cartpage')}}">My Cart</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('loginpage')}}">Login</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('registerpage')}}">Create Account</a></li>
-					</ul>
+					</ul> --}}
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -209,6 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //footer -->	
 <!-- Bootstrap Core JavaScript -->
 <script src="{{asset('frontend_assets/js/bootstrap.min.js')}}"></script>
+@yield('script')
 
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
@@ -228,7 +239,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-<script src="{{asset('frontend_assets/js/minicart.min.js')}}"></script>
+{{-- <script src="{{asset('frontend_assets/js/minicart.min.js')}}"></script>
 <script>
 	// Mini Cart
 	paypal.minicart.render({
@@ -238,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	if (~window.location.search.indexOf('reset=true')) {
 		paypal.minicart.reset();
 	}
-</script>
+</script> --}}
 <!-- main slider-banner -->
 <script src="{{asset('frontend_assets/js/skdslider.min.js')}}"></script>
 <link href="{{asset('frontend_assets/css/skdslider.css')}}" rel="stylesheet">
@@ -252,6 +263,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 		});
 </script>	
+
+
 <!-- //main slider-banner --> 
 </body>
 </html>

@@ -26,7 +26,8 @@ class PageController extends Controller
     }
     public function all($id){
     	$categories = Category::all();
-    	$subcategories = Subcategory::all();
+    	$subcategory = Subcategory::find($id);
+    	$subcategories = $subcategory->category->subcategories;
 
     	$navitem = Item::where('subcategory_id', $id)->get();
     	return view('frontend.all',compact('categories','subcategories','navitem'));
