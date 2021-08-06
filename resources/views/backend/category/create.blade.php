@@ -7,7 +7,7 @@
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-mute d-inline-block">Category Form</h6>
 
-        <a href="{{route('category.index')}}" class="btn btn-info float-right">Back</a>
+        <a href="{{route('category.index')}}" class="btn btn-info float-right"><i class="fas fa-arrow-circle-left"></i></a>
       </div>
       <div class="card-body">
         {{-- Change Error Message UI (try yourself) --}}

@@ -29,7 +29,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">DataTable with Subcategory List</h3>
-                <a href="{{route('subcategory.create')}}" class="btn btn-info float-right">New</a>
+                <a href="{{route('subcategory.create')}}" class="btn btn-info float-right"><i class="fas fa-plus"></i></a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -54,8 +54,8 @@
                 </td>
                 <td>{{$subcategory->category->name}}</td>
                 <td>
-                  <a href="{{route('subcategory.edit',$subcategory->id)}}" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="#" data-id="{{route('subcategory.destroy',$subcategory->id)}}" class="btn btn-danger btn-sm deletebtn">Delete</a>
+                  <a href="{{route('subcategory.edit',$subcategory->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-id="{{route('subcategory.destroy',$subcategory->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
               @endforeach
