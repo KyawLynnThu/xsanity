@@ -58,8 +58,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a href="{{route('user.edit',Auth::user()->id)}}">{{ Auth::user()->name }}</a>
+
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
@@ -135,28 +136,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="{{route('homepage')}}" class="act">Home</a></li>	
 									<!-- Mega Menu -->
-									@foreach($categories as $category)
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$category->name}}<b class="caret"></b></a>
-										<ul class="dropdown-menu multi-column columns-3">
-											<div class="row">
-												<div class="multi-gd-img">
-													<ul class="multi-column-dropdown">
-														<h6>All {{$category->name}}</h6>
-														@foreach($category->subcategories as $subcategory)
-														<li>
-															<a href="{{route('allpage',$subcategory->id)}}">
-																{{$subcategory->name}}
-															</a>
-														</li>
-														@endforeach
-													</ul>
-												</div>	
-												
-											</div>
-										</ul>
-									</li>
-									@endforeach								
+									
+															
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>
 								</ul>

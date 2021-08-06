@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Category;
 use App\Subcategory;
+use App\User;
 
 class PageController extends Controller
 {
@@ -62,5 +63,22 @@ class PageController extends Controller
 
     	return view('frontend.contact',compact('categories','subcategories'));
     }
+    public function customer(){
+         $users = User::join('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
+              ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+              ->get(['users.*', 'roles.name as rname']);
+      
+
+        return view('backend.user.customer',compact('users'));
+    }
+     public function customeredit(){
+         $users = User::join('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
+              ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+              ->get(['users.*', 'roles.name as rname']);
+      
+
+        return view('backend.user.customer',compact('users'));
+    }
+
 
 }
