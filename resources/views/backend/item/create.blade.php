@@ -9,7 +9,7 @@
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-mute d-inline-block">Subcategory Form</h6>
 
-        <a href="{{route('item.index')}}" class="btn btn-info float-right">Back</a>
+        <a href="{{route('item.index')}}" class="btn btn-info float-right"><i class="fas fa-arrow-circle-left"></i></a>
       </div>
 
 

@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/','PageController@index')->name('homepage');
-Route::get('/all','PageController@all')->name('allpage');
+Route::get('/all/{id}','PageController@all')->name('allpage');
 Route::get('/cart','PageController@cart')->name('cartpage');
 Route::get('/contact','PageController@contact')->name('contactpage');
 Route::get('/offer','PageController@offer')->name('offerpage');
 Route::get('/login','PageController@login')->name('loginpage');
 Route::get('/register','PageController@register')->name('registerpage');
-Route::get('/detail','PageController@detail')->name('detailpage');
+Route::get('/detail/{id}','PageController@detail')->name('detailpage');
 
 Route::prefix('data-management')->middleware('auth','role:admin')->group(function(){
 
