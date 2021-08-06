@@ -42,13 +42,13 @@ class PageController extends Controller
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	return view('auth.login',compact('categories','subcategories'));
+    	return view('frontend.login',compact('categories','subcategories'));
     }
     public function register(){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	return view('auth.register',compact('categories','subcategories'));
+    	return view('frontend.register',compact('categories','subcategories'));
     }
     public function offer(){
     	$categories = Category::all();
