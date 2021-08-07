@@ -75,15 +75,19 @@
                    <span class='badge rounded-pill bg-dark '> Confirm </span>
                    @elseif ($order->status=='2')
                    <span class='badge rounded-pill bg-success '> Deliver </span>
-                    @elseif ($order->status=='4')
+                    @elseif ($order->status=='3')
                    <span class='badge rounded-pill bg-success'> Success </span>
+                   @elseif ($order->status=='4')
+                   <span class='badge rounded-pill bg-danger'> Cancel </span>
                   @endif
 
 
                 </td>
                 <td>
                   <a href="{{route('order.edit',$order->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                  <a href="#" data-id="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="fas fa-trash-alt"></i></a>
+                  @if ($order->status<'4')
+                  <a href="#" data-id="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-sm deletebtn" ><i class="fas fa-trash-alt"></i></a>
+                  @endif
                 </td>
               </tr>
               @endforeach
