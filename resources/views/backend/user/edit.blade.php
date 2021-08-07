@@ -56,6 +56,15 @@
             <div class="col-sm-10">
               <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}}"></label>
             </div>
+            <label for="inputName" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+              <input type="text" name="" class="col-sm-3 col-form-label" value="{{$user->phone}}"></label>
+            </div>
+
+            <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+              <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->address}}"></label>
+            </div>
           </div>
         <div class="row mb-3">
             <div class="col-sm-10 offset-sm-2">
@@ -105,15 +114,30 @@
             </div>
             @endforeach
             
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-
+              <label for="inputName" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
-              <label class="col-sm-3 col-form-label">{{$user->email}}</label>
+               <div class="col-sm-10">
+              <input type="text" name="email" class="form-control" id="inputName" value="{{$user->email}}">
+            </div>
             </div>
 
             <label for="inputName" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
               <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}}"></label>
+            </div>
+
+               <label for="inputName" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+               <div class="col-sm-10">
+              <input type="text" name="phone" class="form-control" id="inputName" value="{{$user->phone}}">
+            </div>
+            </div>
+
+               <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+               <div class="col-sm-10">
+              <input type="text" name="address" class="form-control" id="inputName" value="{{$user->address}}">
+            </div>
             </div>
 
           </div>

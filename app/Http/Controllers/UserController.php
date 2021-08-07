@@ -46,10 +46,17 @@ class UserController extends Controller
     {
         $request->validate([
             "name" => "required|max:191|min:5",
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' =>['required', 'string', 'max:255'],
+            'address' =>['required', 'string', 'max:255'],
         ]);
         
         // data update
         $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+
         $user->save();
 
         // redirect

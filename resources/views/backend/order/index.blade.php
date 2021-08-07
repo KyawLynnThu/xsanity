@@ -85,9 +85,8 @@
                 </td>
                 <td>
                   <a href="{{route('order.edit',$order->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                  @if ($order->status<'4')
-                  <a href="#" data-id="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-sm deletebtn" ><i class="fas fa-trash-alt"></i></a>
-                  @endif
+                  
+                  <button class="btn btn-outline-info btn-sm deletebtn"data-id="{{route('order.destroy',$order->id)}} "<?php if($order->status== 4 ) echo "disabled" ?> ><i class="fas fa-trash-alt"></i></button>
                 </td>
               </tr>
               @endforeach

@@ -65,8 +65,9 @@ class OrderController extends Controller
        
         $orderitems = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
               ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->join('users', 'orders.user_id', '=', 'users.id')
               ->where('item_order.order_id', '=', $order->id)
-              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code']);
+              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code','users.*']);
 
         return view('backend.order.edit',compact('orders','orderitems'));
     }
@@ -80,7 +81,17 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            "status" => "required|max:191|min:1",
+        ]);
+        
+        // data update
+        $order->status = $request->status;
+        $order->save();
+
+        // redirect
+        return redirect()->route('order.index');
+
     }
 
     /**

@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Invoice</h1>
+            <h1>Invoice</h1> <br>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -16,6 +16,49 @@
               <li class="breadcrumb-item active">Invoice</li>
             </ol>
           </div>
+        </div>
+        <div class="row my-2">
+          @foreach($orderitems as $orderitem)
+            <div class="col-md-12 mb-3">
+              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="status" value="1">
+              
+                <button class="btn btn-outline-info"<?php if($orderitem->status>='1') echo "disabled" ?>>
+                <i class="icofont-tick-mark"></i>Confirm</button>                                      
+              </form>
+            
+
+              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+            
+                @csrf
+                @method('PUT')
+                  <input type="hidden" name="status" value="2">
+              
+                  <button class="btn btn-outline-dark"<?php if($orderitem->status>='2') echo "disabled" ?>>
+                  <i class="icofont-tick-mark"></i>Deliver</button>                                      
+              </form>
+              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+            
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="status" class="d-inline-block" value="3">
+              
+                <button class="btn btn-outline-success"<?php if($orderitem->status>='3') echo "disabled" ?>>
+                <i class="icofont-tick-mark"></i>Success</button>                                      
+              </form>
+              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+            
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="status" value="4">
+              
+                <button class="btn btn-outline-danger"<?php if($orderitem->status>='4') echo "disabled" ?>>
+                <i class="icofont-tick-mark"></i>Cancel</button>                                      
+              </form>
+          </div>
+          @endforeach
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -62,6 +105,11 @@
                      @foreach($orderitems as $orderitem)
                   To
                   <address>
+                    <strong>{{$orderitem->name}}</strong><br>
+                    {{$orderitem->address}}<br>
+                    Phone: {{$orderitem->phone}}<br>
+                    Email: {{$orderitem->email}}
+                  </address>
                    
 
                 </div>
@@ -78,10 +126,12 @@
                   <span class='badge rounded-pill  bg-primary'> Pending </span>
                   @elseif ($orderitem->status=='1')
                    <span class='badge rounded-pill bg-dark '> Confirm </span>
-                   @elseif ($orderitme->status=='2')
+                   @elseif ($orderitem->status=='2')
                    <span class='badge rounded-pill bg-success '> Deliver </span>
-                    @elseif ($orderitem->orderstatus=='4')
+                    @elseif ($orderitem->status=='3')
                    <span class='badge rounded-pill bg-success'> Success </span>
+                   @elseif ($orderitem->status=='4')
+                   <span class='badge rounded-pill bg-success'> Cancel </span>
                   @endif
                   
                 </div>
@@ -113,7 +163,7 @@
                       
                       <td>{{$orderitem->total}}</td>
                     </tr>
-                    @endforeach
+                    
                    
                     </tbody>
                   </table>
@@ -126,7 +176,18 @@
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
-                  
+                    <br>
+                    <h3> Customer Note</h3>
+                   
+                 <div class="col-10 mt-3">
+                  <div class="col-sm-12 invoice-col">
+                  {{$orderitem->note}}
+                </div>
+
+                    <!-- <span class="border">{{$orderitem->note}}</span> -->
+                    
+                  </div>
+                
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
@@ -164,7 +225,7 @@
                   
                 </div>
               </div>
-               
+               @endforeach
             </div>
             <!-- /.invoice -->
           </div><!-- /.col -->

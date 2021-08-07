@@ -46,7 +46,11 @@
                                     </span>
                                 @enderror
 
-                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Password Confirmation">
+                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Password Confirmation"><br>
+
+                   <input id="phone" type="tel" class="form-control" name="phone" required placeholder="Phone Number"> <br>
+
+                   <textarea class="form-control" id="exampleFormControlTextarea1" name="address" placeholder="Address" rows="3"></textarea>
 
                     <div class="register-check-box">
                         <div class="check">

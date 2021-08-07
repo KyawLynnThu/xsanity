@@ -48,7 +48,10 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <br>
+                   <input id="phone" type="tel" class="form-control" name="phone" required value="{{$user->phone}}" placeholder="Phone Number"> <br>
 
+                     <textarea class="form-control" id="exampleFormControlTextarea1" name="address" value="{{$user->address}}"rows="3"></textarea>
                    
 
                     <div class="register-check-box">
