@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -58,7 +60,15 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        $orders = DB::table('orders')
+                ->where('id', '=',$order->id) ;
+       
+        $orderitems = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->where('item_order.order_id', '=', $order->id)
+              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code']);
+
+        return view('backend.order.edit',compact('orders','orderitems'));
     }
 
     /**
@@ -81,6 +91,9 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        
+        return redirect()->route('order.index');
     }
 }

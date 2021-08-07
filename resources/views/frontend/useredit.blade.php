@@ -41,7 +41,7 @@
                                     </span>
                                 @enderror
 
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password" value="{{$user->password}}">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password" value="{{$user->password}}" readonly="">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                     </span>
                                 @enderror
 
-                   <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Password Confirmation" value="{{$user->password}}">
+                   
 
                     <div class="register-check-box">
                         <div class="check">

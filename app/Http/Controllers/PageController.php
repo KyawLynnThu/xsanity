@@ -7,6 +7,7 @@ use App\Item;
 use App\Category;
 use App\Subcategory;
 use App\User;
+use App\Order;
 
 class PageController extends Controller
 {
@@ -80,5 +81,17 @@ class PageController extends Controller
         return view('backend.user.customer',compact('users'));
     }
 
+    public function print(Order $order){
+          
+         $orders = DB::table('orders')
+                ->where('id', '=',$order->id) ;
+
+        $orderitems = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->where('item_order.order_id', '=', $order->id)
+              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code']);
+
+        return view('backend.order.print',compact('orders1','orderitems'));
+    }
 
 }

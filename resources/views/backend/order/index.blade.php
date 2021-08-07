@@ -28,7 +28,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with Category List</h3>
+                <h3 class="card-title">DataTable with Order List</h3>
                 <a href="{{route('category.create')}}" class="btn btn-info float-right"><i class="fas fa-plus"></i></a>
               </div>
               <!-- /.card-header -->
@@ -38,9 +38,11 @@
                   <tr>
                     <th>ID</th>
                     <th>VoucherNumber</th>
+                    <th>Date</th>
                     <th>Customer</th>
                     <th>Total</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -52,20 +54,36 @@
                 <td>{{$i++}}</td>
                 <td>
                   {{$order->voucherno}}
+                </td>
+                <td>
+                   {{Carbon\Carbon::parse($order->orderdate)->format('d/m/Y')}}
+                  
                   
                 </td>
                 <td>
-                  {{$order->user_id}}
+                  {{$order->user->name}}
                   
                 </td>
                 <td>
-                  {{$order->total}}
+                  {{number_format($order->total)}}
                   
                 </td>
-                <td></td>
                 <td>
-                  <a href="{{route('category.edit',$category->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
-                  <a href="#" data-id="{{route('category.destroy',$category->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="fas fa-trash-alt"></i></a>
+                  @if ($order->status=='0')
+                  <span class='badge rounded-pill  bg-primary'> Pending </span>
+                  @elseif ($order->status=='1')
+                   <span class='badge rounded-pill bg-dark '> Confirm </span>
+                   @elseif ($order->status=='2')
+                   <span class='badge rounded-pill bg-success '> Deliver </span>
+                    @elseif ($order->status=='4')
+                   <span class='badge rounded-pill bg-success'> Success </span>
+                  @endif
+
+
+                </td>
+                <td>
+                  <a href="{{route('order.edit',$order->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                  <a href="#" data-id="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
               @endforeach

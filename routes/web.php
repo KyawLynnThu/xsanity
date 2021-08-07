@@ -39,9 +39,9 @@ Route::resource('item','ItemController');
 Route::resource('order','OrderController');
 Route::resource('rating','RatingController');
 Route::resource('comment', 'CommentController');
-// Route::resource('user', 'UserController');
-Route::get('/customer','PageController@customer')->name('customerpage');
 
+Route::get('/customer','PageController@customer')->name('customerpage');
+Route::get('/print','PageController@print')->name('print');
 
 });
 

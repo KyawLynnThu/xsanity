@@ -62,7 +62,7 @@ class UserController extends Controller
         if ($roles[0] == 'admin') {
             return view('backend.user.edit',compact('user','urole'));
         }else{
-          return view('frontend.useredit',compact('user','urole'));
+          return redirect()->route('homepage');
         }
 
     }

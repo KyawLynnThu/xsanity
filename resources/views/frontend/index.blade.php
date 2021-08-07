@@ -522,5 +522,5 @@
 @endsection
 @section('script')
 <script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
->>>>>>> a24da1e3afcce8cb06741b05e98ed8e8e3250cd7
+
 @endsection
