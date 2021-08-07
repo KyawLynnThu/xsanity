@@ -26,6 +26,11 @@ Route::get('/login','PageController@login')->name('loginpage');
 Route::get('/register','PageController@register')->name('registerpage');
 Route::get('/detail/{id}','PageController@detail')->name('detailpage');
 
+
+Route::prefix('data-management')->middleware('auth')->group(function(){
+Route::resource('user', 'UserController');
+});
+
 Route::prefix('data-management')->middleware('auth','role:admin')->group(function(){
 
 Route::resource('category', 'CategoryController');
@@ -34,6 +39,9 @@ Route::resource('item','ItemController');
 Route::resource('order','OrderController');
 Route::resource('rating','RatingController');
 Route::resource('comment', 'CommentController');
+
+Route::get('/customer','PageController@customer')->name('customerpage');
+Route::get('/print','PageController@print')->name('print');
 
 });
 

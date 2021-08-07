@@ -50,27 +50,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                        <li>
-                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                           	<a class="dropdown-item" href="{{ route('logout') }}" 
-                           	onclick="event.preventDefault(); 
-                           	document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        	@csrf
-                        </form>
-                        </li>
+                        	@if (Route::has('register'))
+		                        <li>
+		                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+		                        </li>
+                        	@endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a href="{{route('user.edit',Auth::user()->id)}}">{{ Auth::user()->name }}</a>
+
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                            	<a class="dropdown-item" href="{{ route('logout') }}"
+                                       	onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                            </li>
                         @endguest
 					<li><a href="{{route('contactpage')}}">Help</a></li>
 				</ul>
@@ -153,6 +155,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</ul>
 									</li>
 									@endforeach --}}								
+
+														
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>
 								</ul>
@@ -199,11 +203,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Profile</h3>
-					{{-- <ul class="info"> 
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('cartpage')}}">My Cart</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('loginpage')}}">Login</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('registerpage')}}">Create Account</a></li>
-					</ul> --}}
+					<ul class="info">
+						@guest
+                            <li class="nav-item">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                	<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                            	<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                	<i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
 				</div>
 				<div class="clearfix"> </div>
 			</div>
