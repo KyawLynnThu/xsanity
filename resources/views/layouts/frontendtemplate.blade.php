@@ -42,20 +42,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="agileits_header">
 		<div class="container">
 			<div class="w3l_offers">
-				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{{route('homepage')}}">SHOP NOW</a></p>
+				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{{route('homepage')}}" style="color: red;">SHOP NOW</a></p>
 			</div>
 			<div class="agile-login">
 				<ul>
-
 					@guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        <li>
+                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        	@if (Route::has('register'))
+		                        <li>
+		                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+		                        </li>
+                        	@endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -65,8 +64,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </li>
                             <li class="nav-item dropdown">
                             	<a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       	onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -75,18 +74,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </form>
                             </li>
                         @endguest
-
 					<li><a href="{{route('contactpage')}}">Help</a></li>
-
-					
 				</ul>
 			</div>
 			<div class="product_list_header">  
-					<form action="#" method="post" class="last"> 
+					{{-- <form action="#" method="post" class="last"> 
 						<input type="hidden" name="cmd" value="_cart">
-						<input type="hidden" name="display" value="1">
-						<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-					</form>  
+						<input type="hidden" name="display" value="1"> --}}
+						<a href="{{route('cartpage')}}" style="color: red; font-size: 30px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+						
+					{{-- </form>   --}}
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -136,8 +133,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="{{route('homepage')}}" class="act">Home</a></li>	
 									<!-- Mega Menu -->
-									
-															
+									{{-- @foreach($categories as $category)
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$category->name}}<b class="caret"></b></a>
+										<ul class="dropdown-menu multi-column columns-3">
+											<div class="row">
+												<div class="multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<h6>All {{$category->name}}</h6>
+														@foreach($category->subcategories as $subcategory)
+														<li>
+															<a href="{{route('allpage',$subcategory->id)}}">
+																{{$subcategory->name}}
+															</a>
+														</li>
+														@endforeach
+													</ul>
+												</div>	
+												
+											</div>
+										</ul>
+									</li>
+									@endforeach --}}								
+
+														
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>
 								</ul>

@@ -23,8 +23,10 @@ class PageController extends Controller
     	$subcategories = Subcategory::all();
 
     	$item = Item::find($id);
+        $related_item = Item::where('subcategory_id', $item['subcategory']['id'])->where('id','!=',$id)->limit(4)->inRandomOrder()->get()->toArray();
+        // dd($related_item);die;
 
-    	return view('frontend.detail',compact('categories','subcategories','item'));
+    	return view('frontend.detail',compact('categories','subcategories','item','related_item'));
     }
     public function all($id){
     	$categories = Category::all();
@@ -44,13 +46,13 @@ class PageController extends Controller
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	return view('frontend.login',compact('categories','subcategories'));
+    	return view('auth.login',compact('categories','subcategories'));
     }
     public function register(){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	return view('frontend.register',compact('categories','subcategories'));
+    	return view('auth.register',compact('categories','subcategories'));
     }
     public function offer(){
     	$categories = Category::all();
