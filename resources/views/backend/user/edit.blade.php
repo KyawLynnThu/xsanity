@@ -54,7 +54,7 @@
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}}"></label>
+              <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}}" readonly=""></label>
             </div>
             <label for="inputName" class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-10">
@@ -123,7 +123,7 @@
 
             <label for="inputName" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
-              <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}}"></label>
+              <input type="password" name="" class="col-sm-3 col-form-label" value="{$user->password}} readonly"></label>
             </div>
 
                <label for="inputName" class="col-sm-2 col-form-label">Phone</label>
