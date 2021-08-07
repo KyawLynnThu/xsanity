@@ -42,50 +42,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="agileits_header">
 		<div class="container">
 			<div class="w3l_offers">
-				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{{route('homepage')}}">SHOP NOW</a></p>
+				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{{route('homepage')}}" style="color: red;">SHOP NOW</a></p>
 			</div>
 			<div class="agile-login">
 				<ul>
-
 					@guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                            	<a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                            </li>
+                        <li>
+                            <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li>
+                            <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                           	<a class="dropdown-item" href="{{ route('logout') }}" 
+                           	onclick="event.preventDefault(); 
+                           	document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        	@csrf
+                        </form>
+                        </li>
                         @endguest
-
 					<li><a href="{{route('contactpage')}}">Help</a></li>
-
-					
 				</ul>
 			</div>
 			<div class="product_list_header">  
-					<form action="#" method="post" class="last"> 
+					{{-- <form action="#" method="post" class="last"> 
 						<input type="hidden" name="cmd" value="_cart">
-						<input type="hidden" name="display" value="1">
-						<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-					</form>  
+						<input type="hidden" name="display" value="1"> --}}
+						<a href="{{route('cartpage')}}" style="color: red; font-size: 30px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
+						
+					{{-- </form>   --}}
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -135,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="{{route('homepage')}}" class="act">Home</a></li>	
 									<!-- Mega Menu -->
-									@foreach($categories as $category)
+									{{-- @foreach($categories as $category)
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$category->name}}<b class="caret"></b></a>
 										<ul class="dropdown-menu multi-column columns-3">
@@ -156,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</ul>
 									</li>
-									@endforeach								
+									@endforeach --}}								
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>
 								</ul>
