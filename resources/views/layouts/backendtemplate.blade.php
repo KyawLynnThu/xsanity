@@ -293,12 +293,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('order.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order List</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inline</p>
