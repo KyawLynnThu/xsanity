@@ -241,7 +241,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -249,7 +249,7 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
@@ -257,7 +257,7 @@
               <p>
                 User Management
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+               {{--  <span class="badge badge-info right">6</span> --}}
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -279,19 +279,13 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-truck"></i>
               <p>
                 Order Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('order.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Order List</p>
-                </a>
-              </li>
               <li class="nav-item">
                 <a href="{{route('order.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -312,7 +306,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+         {{--  <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -370,7 +364,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{route('homepage')}}" class="nav-link">
               <i class="nav-icon fas fa-home"></i>

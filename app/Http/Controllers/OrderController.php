@@ -6,9 +6,15 @@ use App\Order;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class OrderController extends Controller
 {
+    // public function __construct($value='')
+    // {
+    //     $this->middleware('auth:customer')->only('store');
+    //     $this->middleware('auth:admin')->except('store');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +44,28 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            DB::transaction(function () use ($request){
+            $cartArr = json_decode($request->data);
+            // dd($cartArr);
+            return 'Success1';
+
+            //insert orders
+            $order = new Order;
+            $order->orderdate = date('Y-m-d');
+            $order->voucherno = time();
+            $order->total = $request->total;
+            $order->note = '';
+            $order->status = 0;
+            $order->user_id = Auth::id();
+            $order->save();
+
+            // insert item_order
+             foreach($cartArr as $item){
+                $order->items()->attach($item->id, ['qty' => $item->qty]);
+             }
+        });
+
+        return 'success2';
     }
 
     /**

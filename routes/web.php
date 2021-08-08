@@ -36,7 +36,6 @@ Route::prefix('data-management')->middleware('auth','role:admin')->group(functio
 Route::resource('category', 'CategoryController');
 Route::resource('subcategory', 'SubcategoryController');
 Route::resource('item','ItemController');
-Route::resource('order','OrderController');
 Route::resource('rating','RatingController');
 Route::resource('comment', 'CommentController');
 
@@ -44,6 +43,11 @@ Route::get('/customer','PageController@customer')->name('customerpage');
 Route::get('/print','PageController@print')->name('print');
 
 });
+Route::prefix('order-management')->group(function () {
+  Route::resource('order', 'OrderController');
+});
+
+
 
 Auth::routes();
 

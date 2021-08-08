@@ -22,16 +22,16 @@
 				<h2>{{$item->name}}</h2>
 					<div class="rating1">
 						<span class="starRating">
-							{{-- <input id="rating5" type="radio" name="rating" value="5">
-							<label for="rating5">5</label> --}}
-							{{-- <input id="rating4" type="radio" name="rating" value="4">
+							<input id="rating5" type="radio" name="rating" value="5">
+							<label for="rating5">5</label>
+							<input id="rating4" type="radio" name="rating" value="4">
 							<label for="rating4">4</label>
 							<input id="rating3" type="radio" name="rating" value="3" checked="">
 							<label for="rating3">3</label>
 							<input id="rating2" type="radio" name="rating" value="2">
 							<label for="rating2">2</label>
 							<input id="rating1" type="radio" name="rating" value="1">
-							<label for="rating1">1</label> --}}
+							<label for="rating1">1</label>
 						</span>
 					</div>
 					<div class="w3agile_description">
@@ -40,7 +40,17 @@
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing">$21.00 <span>$25.00</span></h4>
+							@php
+								if($item->discount){
+							@endphp
+								<h4 class="m-sing">{{$item->discount}} Ks <span>{{$item->price}} Ks</span></h4>
+							@php
+								} else {
+							@endphp
+								<h4 class="m-sing">{{$item->price}} Ks </h4>
+							@php
+								}
+							@endphp
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
 							<form action="#" method="post">
@@ -67,7 +77,7 @@
 <!-- new -->
 	<div class="newproducts-w3agile">
 		<div class="container">
-			<h3>New offers</h3>
+			<h3>You May Also Like</h3>
 				<div class="agile_top_brands_grids">
 					@foreach($related_item as $related)
 					<div class="col-md-3 top_brand_left-1">
@@ -77,8 +87,8 @@
 									<figure>
 										<div class="snipcart-item block">
 											<div class="snipcart-thumb">
-												<a href="products.html">
-													<img title=" " alt=" " src="{{asset('storage/'.$related['photo'])}}"></a>		
+												<a href="{{route('detailpage',$related['id'])}}">
+													<img title=" " alt=" " src="{{asset('storage/'.$related['photo'])}}" style="width: 200px;height: 200px;"></a>		
 												<p>{{$related['name']}}</p>
 												<div class="stars">
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -87,7 +97,17 @@
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star gray-star" aria-hidden="true"></i>
 												</div>
-													<h4>$35.99 <span>$55.00</span></h4>
+													@php
+									                  if($item['discount']){
+									                @endphp
+									                	<h4>{{$item['discount']}} Ks <span>{{$item['price']}} Ks</span></h4>
+									                @php
+									                  } else {
+									                @endphp
+									                  <h4>{{$item['price']}} Ks </h4>
+									                @php
+									                  }
+									                @endphp
 											</div>
 											<div class="snipcart-details top_brand_home_details">
 												<form action="#" method="post">
