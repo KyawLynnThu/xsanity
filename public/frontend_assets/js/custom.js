@@ -153,6 +153,7 @@ $(document).ready(function(){
     
 
     amount= total+delivery;
+    //var mycartarray = JSON.parse(mycartjson);
 
     for(item of mycartarray){
     	var unitprice = item.price;
@@ -165,7 +166,7 @@ $(document).ready(function(){
 				total += (item.qty*price);
 
     ul+=`<ul>
-						<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>
+				<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>
 						
 					</ul>`
     
@@ -190,8 +191,8 @@ $(document).ready(function(){
     $.post("order-management/order",{data:mycartjson,total:total},function(res){
       console.log(res);
       // remove ls
-       //localStorage.clear();
-       //getData();
+       localStorage.clear();
+       getData();
       // use sweetalert
     })
   })
