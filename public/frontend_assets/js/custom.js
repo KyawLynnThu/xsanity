@@ -168,12 +168,14 @@ $(document).ready(function(){
     ul+=`<ul>
 				<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>
 						
-					</ul>`
+		`
     
   }
-  ul+=`<ul><li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
-						<li>Total <i>-</i> <span>${amount} Ks</span></li>
-						</ul>`
+  	ul+=`
+  			<li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
+			<li>Total <i>-</i> <span>${amount} Ks</span></li>
+		</ul>`
+
   $('#product').html(ul);
   $('#tbody').html(html);
   }

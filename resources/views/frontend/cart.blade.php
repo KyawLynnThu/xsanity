@@ -12,7 +12,7 @@
 	</div>
 <!-- //breadcrumbs -->
 <!-- checkout -->
-	
+	<div class="checkout">
 		<div class="container">
 			<h2>Your shopping cart contains: <span> Products</span></h2>
 			<div class="checkout-right">
@@ -62,10 +62,10 @@
 					</tr> --}}
 					</tbody>
 					<tfoot>
-					<tr >
+					<tr>
 						<td colspan="7" align="right">
-						<button type="submit" class="btn btn-default search checkout" aria-label="Left Align">
-					Checkout
+						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
+							Checkout
 						</button>
 						</td>
 					</tr>
@@ -84,15 +84,32 @@
 						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
 						<li>Total <i>-</i> <span>$84.00</span></li>
 					</ul> --}}
+					</div>
+				</div>
+				<div class="checkout-right-basket">
+					<a href="{{ url()->previous() }}"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"  aria-label="Left Align"></span>Continue Shopping</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		{{-- <div class="checkout-left">	
+				<div class="checkout-left-basket">
+					<h4>Continue to basket</h4>
+					<ul>
+						<li>Product1 <i>-</i> <span>$15.00 </span></li>
+						<li>Product2 <i>-</i> <span>$25.00 </span></li>
+						<li>Product3 <i>-</i> <span>$29.00 </span></li>
+						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
+						<li>Total <i>-</i> <span>$84.00</span></li>
+					</ul>
 				</div>
 				<div class="checkout-right-basket">
 					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
 				</div>
 				<div class="clearfix"> </div>
-			</div>
 		</div>
-		
+		 --}}
 	</div>
+</div>
 <!-- //checkout -->
 @endsection
 

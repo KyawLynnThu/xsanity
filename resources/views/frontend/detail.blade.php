@@ -20,17 +20,18 @@
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
 				<h2>{{$item->name}}</h2>
+				<h4>Quality: {{$item->rate}}/10⭐</h4><br>
 					<div class="rating1">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
 							<label for="rating5">5</label>
 							<input id="rating4" type="radio" name="rating" value="4">
 							<label for="rating4">4</label>
-							<input id="rating3" type="radio" name="rating" value="3" checked="">
+							<input id="rating3" type="radio" name="rating" value="3">
 							<label for="rating3">3</label>
 							<input id="rating2" type="radio" name="rating" value="2">
 							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1">
+							<input id="rating1" type="radio" name="rating" value="1" checked="">
 							<label for="rating1">1</label>
 						</span>
 					</div>
@@ -43,11 +44,11 @@
 							@php
 								if($item->discount){
 							@endphp
-								<h4 class="m-sing">{{$item->discount}} Ks <span>{{$item->price}} Ks</span></h4>
+								<h4 class="m-sing">MMK {{$item->discount}}  <span>MMK {{$item->price}} </span></h4>
 							@php
 								} else {
 							@endphp
-								<h4 class="m-sing">{{$item->price}} Ks </h4>
+								<h4 class="m-sing">MMK{{$item->price}}  </h4>
 							@php
 								}
 							@endphp
@@ -108,22 +109,6 @@
 									                @php
 									                  }
 									                @endphp
-											</div>
-											<div class="snipcart-details top_brand_home_details">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart">
-														<input type="hidden" name="add" value="1">
-														<input type="hidden" name="business" value=" ">
-														<input type="hidden" name="item_name" value="Fortune Sunflower Oil">
-														<input type="hidden" name="amount" value="35.99">
-														<input type="hidden" name="discount_amount" value="1.00">
-														<input type="hidden" name="currency_code" value="USD">
-														<input type="hidden" name="return" value=" ">
-														<input type="hidden" name="cancel_return" value=" ">
-														<input type="submit" name="submit" value="Add to cart" class="button">
-													</fieldset>
-												</form>
 											</div>
 										</div>
 									</figure>

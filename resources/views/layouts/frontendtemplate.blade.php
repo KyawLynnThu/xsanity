@@ -41,10 +41,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="container">
-			<div class="w3l_offers">
+			<div class="w3l_offers" style="margin-top: 5px;">
 				<p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="{{route('homepage')}}" style="color: red;">SHOP NOW</a></p>
 			</div>
-			<div class="agile-login">
+			<div class="agile-login" style="margin-top: 5px;">
 				<ul>
 					@guest
                         <li>
@@ -81,8 +81,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					{{-- <form action="#" method="post" class="last"> 
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="display" value="1"> --}}
-						<a href="{{route('cartpage')}}" style="color: red; font-size: 30px;"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
-						
+				<a href="{{route('cartpage')}}" style="color: red; font-size: 30px;">
+					<i class="fa fa-cart-arrow-down" aria-hidden="true">
+						<span class="badge count" style="font-size: 5px; border: 1px solid red; border-radius: 50%; background-color: red;"></span>
+					</i>
+					<h6 class="cartTotal" style="color: red;"></h6>
+				</a>
 					{{-- </form>   --}}
 			</div>
 			<div class="clearfix"> </div>
@@ -108,7 +112,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3l_search">
 			<form action="#" method="post">
 				<input type="search" name="Search"  id="auto_generate" placeholder="Search for a Product..." required="">
-				{{ csrf_field() }}
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
