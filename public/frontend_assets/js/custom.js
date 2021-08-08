@@ -68,8 +68,11 @@ $(document).ready(function(){
   function getData(argument) {
     var mycartjson = localStorage.getItem('mycart');
     var html="";
+    var ul="";
     var j=1;
     var total = 0;
+    var delivery = 1500;
+
     if (mycartjson) {
       mycartarray = JSON.parse(mycartjson);
 
@@ -82,7 +85,7 @@ $(document).ready(function(){
 			}else{
 				var price = unitprice;
 			}
-				total += (item.qty*item.price);
+				total += (item.qty*price);
         html+= `<tr class="rem1">
         				<td class="invert">
 							<div class="rem">
@@ -101,11 +104,24 @@ $(document).ready(function(){
 									<div class="entry value-plus active">&nbsp;</div>
 								</div>
 							</div>
-						</td>
+						</td>`
 						
-						
-						<td class="invert">${item.price}</td>
-						<td class="invert">${(item.qty*item.price)}</td>
+						if (discount > 0) {
+						html+=`<td><p class="item-price">
+		                        	
+		                        	<span class="d-block"> ${price}Ks</span>
+		                        	
+		                       </p></td>`;}
+		                       else{
+		                       	html+=`<td><p class="item-price">
+		                        	
+		                        	${unitprice}Ks
+		                        	
+		                        	
+		                       </p></td>`;
+		                       }
+						html+=`
+						<td class="invert">${(item.qty*price)}</td>
 
 
 					</tr>
@@ -134,7 +150,32 @@ $(document).ready(function(){
               </tr>`;
     }
 
-    $('#tbody').html(html);
+    
+
+    amount= total+delivery;
+    //var mycartarray = JSON.parse(mycartjson);
+
+    for(item of mycartarray){
+    	var unitprice = item.price;
+			var discount = item.discount;
+			if (discount) {
+				var price = discount;
+			}else{
+				var price = unitprice;
+			}
+				total += (item.qty*price);
+
+    ul+=`<ul>
+				<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>
+						
+					</ul>`
+    
+  }
+  ul+=`<ul><li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
+						<li>Total <i>-</i> <span>${amount} Ks</span></li>
+						</ul>`
+  $('#product').html(ul);
+  $('#tbody').html(html);
   }
 
   // checkout process
@@ -146,11 +187,14 @@ $(document).ready(function(){
     });
     var mycartjson = localStorage.getItem('mycart');
     var total = $(this).data('total');
-    $.post("/order",{data:mycartjson,total:total},function(res){
-      // console.log(res);
+    console.log(mycartjson);
+    $.post("order-management/order",{data:mycartjson,total:total},function(res){
+      console.log(res);
       // remove ls
-      localStorage.clear();
+       localStorage.clear();
+
       getData();
+
       // use sweetalert
     })
   })
