@@ -104,7 +104,19 @@ $(document).ready(function(){
 									<div class="entry value-plus active">&nbsp;</div>
 								</div>
 							</div>
-						</td>`
+						</td>
+
+						<script>
+						$('.value-plus').on('click', function(){
+							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+							divUpd.text(newVal);
+						});
+
+						$('.value-minus').on('click', function(){
+							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+							if(newVal>=1) divUpd.text(newVal);
+						});
+					</script>`
 						
 						if (discount > 0) {
 						html+=`<td><p class="item-price">
@@ -125,28 +137,20 @@ $(document).ready(function(){
 
 
 					</tr>
-					<script>
-						$('.value-plus').on('click', function(){
-							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-							divUpd.text(newVal);
-						});
-
-						$('.value-minus').on('click', function(){
-							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-							if(newVal>=1) divUpd.text(newVal);
-						});
-					</script>`;
+					`;
       }
 
-      html += `<tr>
-                <td colspan="6"><h4>Total :</h4> </td>
-                <td>${total}</td>
-              </tr>`;
+      // html += `<tr>
+      //           <td colspan="6"><h4>Total :</h4> </td>
+      //           <td>${total}</td>
+      //         </tr>`;
+
       $('.checkout').attr('data-total',total);
+
     }else{
       $('.checkout').addClass('disabled');
       html = `<tr>
-                <td colspan="5">Empty Cart!</td>
+                <td colspan="7">Empty Cart!</td>
               </tr>`;
     }
 
@@ -154,7 +158,7 @@ $(document).ready(function(){
 
     amount= total+delivery;
     //var mycartarray = JSON.parse(mycartjson);
-
+    if (mycartjson) {
     for(item of mycartarray){
     	var unitprice = item.price;
 			var discount = item.discount;
@@ -172,8 +176,13 @@ $(document).ready(function(){
     
   }
   ul+=`<ul><li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
-						<li>Total <i>-</i> <span>${amount} Ks</span></li>
-						</ul>`
+						<li><strong>Total <i>-</i> <span>${amount} Ks</span></strong></li>
+						</ul>`;
+					}
+	else{
+      ul+= `<ul><li>Empty Cart! </li>
+			</ul>`;
+    }
   $('#product').html(ul);
   $('#tbody').html(html);
   }
@@ -194,6 +203,19 @@ $(document).ready(function(){
        localStorage.clear();
        getData();
       // use sweetalert
+    Swal.fire({
+  	icon: 'success',
+  	title: 'Congratulation!',
+  	text: 'Your Order is Complete.',
+  	footer: '<a href="">Your Order will be delivered in 3 days.</a>'
+	})
+
     })
   })
 })
+
+
+
+
+
+				
