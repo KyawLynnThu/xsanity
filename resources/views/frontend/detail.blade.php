@@ -54,20 +54,10 @@
 							@endphp
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
-							<form action="#" method="post">
-								<fieldset>
-									<input type="hidden" name="cmd" value="_cart">
-									<input type="hidden" name="add" value="1">
-									<input type="hidden" name="business" value=" ">
-									<input type="hidden" name="item_name" value="pulao basmati rice">
-									<input type="hidden" name="amount" value="21.00">
-									<input type="hidden" name="discount_amount" value="1.00">
-									<input type="hidden" name="currency_code" value="USD">
-									<input type="hidden" name="return" value=" ">
-									<input type="hidden" name="cancel_return" value=" ">
-									<input type="submit" name="submit" value="Add to cart" class="button">
-								</fieldset>
-							</form>
+							<a href="{{route('cartpage')}}">
+												<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
+
+										
 						</div>
 					</div>
 				</div>
@@ -122,4 +112,7 @@
 		</div>
 	</div>
 <!-- //new -->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection

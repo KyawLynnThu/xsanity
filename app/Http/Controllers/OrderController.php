@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 
+
 class OrderController extends Controller
 {
     // public function __construct($value='')
