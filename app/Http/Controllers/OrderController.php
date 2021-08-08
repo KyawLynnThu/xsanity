@@ -44,10 +44,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-            DB::transaction(function () use ($request){
+            //DB::transaction(function () use ($request){
             $cartArr = json_decode($request->data);
-            // dd($cartArr);
-            return 'Success1';
+            //dd($cartArr);
+            //return 'Success1';
 
             //insert orders
             $order = new Order;
@@ -63,7 +63,8 @@ class OrderController extends Controller
              foreach($cartArr as $item){
                 $order->items()->attach($item->id, ['qty' => $item->qty]);
              }
-        });
+
+        //});
 
         return 'success2';
     }

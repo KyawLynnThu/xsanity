@@ -12,7 +12,7 @@
 	</div>
 <!-- //breadcrumbs -->
 <!-- checkout -->
-	<div class="checkout">
+	
 		<div class="container">
 			<h2>Your shopping cart contains: <span> Products</span></h2>
 			<div class="checkout-right">
@@ -66,7 +66,7 @@
 						<td colspan="7" align="right">
 						<button type="submit" class="btn btn-default search checkout" aria-label="Left Align">
 					Checkout
-				</button>
+						</button>
 						</td>
 					</tr>
 					</tfoot>
@@ -91,7 +91,7 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-		</div>
+		
 	</div>
 <!-- //checkout -->
 @endsection
