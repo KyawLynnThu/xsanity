@@ -290,5 +290,5 @@
 <!-- //new -->
 @endsection
 @section('script')
-<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
+	<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection

@@ -5,7 +5,7 @@
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">All Items</li>
+				<li class="active">Search </li>
 			</ol>
 		</div>
 	</div>
@@ -13,17 +13,7 @@
 <!--- groceries --->
 	<div class="products">
 		<div class="container">
-			<div class="col-md-4 products-left">
-				<div class="categories">
-					<h2>Categories</h2>
-					<ul class="cate">
-						@foreach($subcategories as $subcategory)
-						<li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{$subcategory->name}}</a></li>
-						@endforeach
-					</ul>
-				</div>																																												
-			</div>
-			<div class="col-md-8 products-right">
+			<div class="col-md-12 products-right">
 				<div class="products-right-grid">
 					<div class="products-right-grids">
 						<div class="sorting">
@@ -46,7 +36,7 @@
 					</div>
 				</div>
 				<div class="agile_top_brands_grids">
-					@foreach($navitem as $item)
+					{{-- @foreach($navitem as $item) --}}
 					<div class="col-md-4 top_brand_left">
 						<div class="hover14 column">
 							<div class="agile_top_brand_left_grid">								
@@ -54,11 +44,11 @@
 									<figure>
 										<div class="snipcart-item block">
 											<div class="snipcart-thumb">
-												<a href="{{route('detailpage',$item->id)}}">
-													<img src="{{asset('storage/'.$item->photo)}}" style="height: 100px;">
+												<a href="{{-- {{route('detailpage',$item->id)}} --}}">
+													<img src="{{-- {{asset('storage/'.$item->photo)}} --}}" style="height: 100px;">
 												</a>		
-												<p>{{$item->name}}</p>
-												@php
+												<p>{{-- {{$item->name}} --}}</p>
+												{{-- @php
 									                if($item->discount){
 									            @endphp
 									              	<span class="d-block"><h4>{{$item->discount}} Ks</h4></span>
@@ -69,7 +59,8 @@
 									              	<span class="d-block"> <h4>{{$item->price}} Ks</h4></span>
 									            @php
 									             	}
-									            @endphp
+									            @endphp --}}
+									            <h4>500mmk</h4>
 											</div>
 											<div class="snipcart-details top_brand_home_details">
 												<form action="#" method="post">
@@ -93,7 +84,7 @@
 							</div>
 						</div>
 					</div>
-					@endforeach
+					{{-- @endforeach --}}
 						<div class="clearfix"> </div>
 				</div>
 				<nav class="numbering">

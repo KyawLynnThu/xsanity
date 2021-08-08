@@ -8,6 +8,7 @@ use App\Category;
 use App\Subcategory;
 use App\User;
 use App\Order;
+use DB;
 
 class PageController extends Controller
 {
@@ -95,5 +96,6 @@ class PageController extends Controller
 
         return view('backend.order.print',compact('orders1','orderitems'));
     }
+
 
 }

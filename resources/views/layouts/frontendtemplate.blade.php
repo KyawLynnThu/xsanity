@@ -102,9 +102,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span><h5>Great Services, Great Values</h5></span></a></h1>
 				
 			</div>
+		
+
+		{{-- search --}}
 		<div class="w3l_search">
 			<form action="#" method="post">
-				<input type="search" name="Search" placeholder="Search for a Product..." required="">
+				<input type="search" name="Search"  id="auto_generate" placeholder="Search for a Product..." required="">
+				{{ csrf_field() }}
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
@@ -298,6 +302,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		paypal.minicart.reset();
 	}
 </script> --}}
+{{-- Jquery CDN --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- main slider-banner -->
 <script src="{{asset('frontend_assets/js/skdslider.min.js')}}"></script>
 <link href="{{asset('frontend_assets/css/skdslider.css')}}" rel="stylesheet">
