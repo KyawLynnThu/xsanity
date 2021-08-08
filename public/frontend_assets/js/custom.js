@@ -201,7 +201,9 @@ $(document).ready(function(){
       console.log(res);
       // remove ls
        localStorage.clear();
-       getData();
+
+      getData();
+
       // use sweetalert
     Swal.fire({
   	icon: 'success',
