@@ -64,16 +64,16 @@
 					<tfoot>
 					<tr>
 						<td colspan="7" align="right">
-<<<<<<< HEAD
+
 						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
 							Checkout
-=======
+
 						@if (Auth::check())
 	
 
 						<button type="submit" class="btn btn-default search checkout" aria-label="Left Align">
 					Checkout
->>>>>>> 341945075fea9a6cee24804a6c9373a249481bf9
+
 						</button>
 						@else
 					<button type="submit" class="btn btn-default search">
@@ -89,8 +89,7 @@
 				<div class="checkout-left-basket">
 					<h4>Order List</h4>
 					<div id="product">
-<<<<<<< HEAD
-					{{-- <ul>
+ <ul>
 						<li>Product1 <i>-</i> <span>$15.00 </span></li>
 						<li>Product2 <i>-</i> <span>$25.00 </span></li>
 						<li>Product3 <i>-</i> <span>$29.00 </span></li>
@@ -99,15 +98,15 @@
 					</ul> --}}
 					</div>
 				</div>
-=======
+
 					</div>
->>>>>>> 341945075fea9a6cee24804a6c9373a249481bf9
+
 				<div class="checkout-right-basket">
 					<a href="{{ url()->previous() }}"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"  aria-label="Left Align"></span>Continue Shopping</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		{{-- <div class="checkout-left">	
+		<div class="checkout-left">	
 				<div class="checkout-left-basket">
 					<h4>Continue to basket</h4>
 					<ul>
@@ -123,7 +122,7 @@
 				</div>
 				<div class="clearfix"> </div>
 		</div>
-		 --}}
+		 
 	</div>
 </div>
 <!-- //checkout -->

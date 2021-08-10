@@ -97,5 +97,28 @@ class PageController extends Controller
         return view('backend.order.print',compact('orders1','orderitems'));
     }
 
+      public function profile($id){
+
+        $users = User::find($id);
+        $user_role = User::join('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
+              ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
+              ->where('model_has_roles.model_id', '=', $id)
+              ->get(['users.*', 'roles.name as rname']);
+      
+
+        return view('frontend.profile',compact('users','user_role'));
+    }
+    public function myorder($id){
+         
+        $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'items.id', '=', 'item_order.item_id')
+              ->where('orders.user_id', '=', $id)
+              ->get(['orders.*']);
+      
+
+        return view('frontend.order',compact('orders'));
+    }
+
+
 
 }

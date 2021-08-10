@@ -27,8 +27,11 @@ Route::get('/register','PageController@register')->name('registerpage');
 Route::get('/detail/{id}','PageController@detail')->name('detailpage');
 
 
+
 Route::prefix('data-management')->middleware('auth')->group(function(){
 Route::resource('user', 'UserController');
+Route::get('/profile/{id}','PageController@profile')->name('profilepage');
+Route::get('/myorder/{id}','PageController@myorder')->name('myorderpage');
 });
 
 Route::prefix('data-management')->middleware('auth','role:admin')->group(function(){
