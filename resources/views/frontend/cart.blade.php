@@ -12,7 +12,7 @@
 	</div>
 <!-- //breadcrumbs -->
 <!-- checkout -->
-	<div class="checkout">
+	
 		<div class="container">
 			<h2>Your shopping cart contains: <span> Products</span></h2>
 			<div class="checkout-right">
@@ -65,6 +65,7 @@
 					<tr>
 						<td colspan="7" align="right">
 
+<<<<<<< HEAD
 						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
 							Checkout
 
@@ -74,9 +75,17 @@
 						<button type="submit" class="btn btn-default search checkout" aria-label="Left Align">
 					Checkout
 
+=======
+						
+						@if (Auth::check())
+	
+
+						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
+							Checkout
+>>>>>>> 5b9b4ec9ccb67fd4b708683167dc849fd4e57b3a
 						</button>
 						@else
-					<button type="submit" class="btn btn-default search">
+					<button type="submit" class="btn btn-default search" style="color: white; " aria-label="Left Align">
 					<a href="{{ route('login') }}" >{{ __('Checkout') }} </a></button>
 						@endif
 						</td>
@@ -89,7 +98,12 @@
 				<div class="checkout-left-basket">
 					<h4>Order List</h4>
 					<div id="product">
+<<<<<<< HEAD
  <ul>
+=======
+
+					{{-- <ul>
+>>>>>>> 5b9b4ec9ccb67fd4b708683167dc849fd4e57b3a
 						<li>Product1 <i>-</i> <span>$15.00 </span></li>
 						<li>Product2 <i>-</i> <span>$25.00 </span></li>
 						<li>Product3 <i>-</i> <span>$29.00 </span></li>
@@ -122,9 +136,15 @@
 				</div>
 				<div class="clearfix"> </div>
 		</div>
+<<<<<<< HEAD
 		 
 	</div>
 </div>
+=======
+		 --}}
+	
+
+>>>>>>> 5b9b4ec9ccb67fd4b708683167dc849fd4e57b3a
 <!-- //checkout -->
 @endsection
 

@@ -14,14 +14,55 @@
 	<div class="products">
 		<div class="container">
 			<div class="agileinfo_single">
-				
 				<div class="col-md-4 agileinfo_single_left">
 					<img id="example" src="{{asset('storage/'.$item->photo)}}" alt="" style="width: 300px; height: 300px;">
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
 				<h2>{{$item->name}}</h2>
-				<h4>Quality: {{$item->rate}}/10⭐</h4><br>
-					<div class="rating1">
+				<h4>Quality: {{$item->rate}}/10⭐</h4>
+				<div class="w3agile_description">
+					<h4>Description :</h4>
+					<p>{{$item->description}}</p>
+				</div>
+				<div class="snipcart-item block">
+					<div class="snipcart-thumb agileinfo_single_right_snipcart">
+						@php
+							if($item->discount){
+						@endphp
+							<h4 class="m-sing">MMK {{$item->discount}}  <span>MMK {{$item->price}} </span></h4>
+						@php
+							} else {
+						@endphp
+							<h4 class="m-sing">MMK{{$item->price}}  </h4>
+						@php
+							}
+						@endphp
+					</div>
+					<div class="snipcart-details agileinfo_single_right_details">
+						<a href="{{route('cartpage')}}">
+						<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>									
+					</div>
+				</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div><br><br>
+			<div class="col-md-12" style="margin-top: 20px;">
+				<h2 style="text-align: left;">Customer Reviews</h2>
+				<div class="w3agile_description col-md-12">
+					<p class="col-md-12">After 120 days of development and commissioning, the Infinix Team launched Power Marathon Tech. There are two modes for this Tech: "Power Boost" and "Ultra Power Mode", which meet the users' demand for battery life on the premise of not affecting user experience.</p>
+				</div>
+
+				<h4>Write Review</h4><br>
+				  <form action="{{route('add_rate')}}" method="post">
+				  	<div id="rateYo"></div>
+ 
+  
+				  {{-- <div class="form-group">
+				    <label for="exampleFormControlInput1">Email address</label>
+				    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+				  </div> --}}
+				  {{-- <h4 style="margin-top: 10px;">Rating</h4>
+					<div class="rating1" style="margin-top: 10px;">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
 							<label for="rating5">5</label>
@@ -31,37 +72,17 @@
 							<label for="rating3">3</label>
 							<input id="rating2" type="radio" name="rating" value="2">
 							<label for="rating2">2</label>
-							<input id="rating1" type="radio" name="rating" value="1" checked="">
+							<input id="rating1" type="radio" name="rating" value="1">
 							<label for="rating1">1</label>
 						</span>
-					</div>
-					<div class="w3agile_description">
-						<h4>Description :</h4>
-						<p>{{$item->description}}</p>
-					</div>
-					<div class="snipcart-item block">
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							@php
-								if($item->discount){
-							@endphp
-								<h4 class="m-sing">MMK {{$item->discount}}  <span>MMK {{$item->price}} </span></h4>
-							@php
-								} else {
-							@endphp
-								<h4 class="m-sing">MMK{{$item->price}}  </h4>
-							@php
-								}
-							@endphp
-						</div>
-						<div class="snipcart-details agileinfo_single_right_details">
-							<a href="{{route('cartpage')}}">
-												<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
-
-										
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
+					</div><br>
+				  <div class="form-group">
+				    <h4><label for="exampleFormControlTextarea1">Write a Review</label></h4>
+				    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				  </div>
+				  <button type="submit" class="btn btn-primary">Submit</button> --}}
+				</form>
+				
 			</div>
 		</div>
 	</div>
@@ -115,4 +136,14 @@
 @endsection
 @section('script')
 <script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
+<script type="text/javascript">
+	$(function () {
+ 
+  $("#rateYo").rateYo({
+    rating: 3.6
+  });
+ 
+});
+</script>
+
 @endsection

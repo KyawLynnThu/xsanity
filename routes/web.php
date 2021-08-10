@@ -25,6 +25,8 @@ Route::get('/offer','PageController@offer')->name('offerpage');
 Route::get('/login','PageController@login')->name('loginpage');
 Route::get('/register','PageController@register')->name('registerpage');
 Route::get('/detail/{id}','PageController@detail')->name('detailpage');
+Route::get('/autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+
 
 
 
