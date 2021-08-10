@@ -12,7 +12,7 @@
 	</div>
 <!-- //breadcrumbs -->
 <!-- checkout -->
-	<div class="checkout">
+	
 		<div class="container">
 			<h2>Your shopping cart contains: <span> Products</span></h2>
 			<div class="checkout-right">
@@ -65,13 +65,15 @@
 					<tr>
 						<td colspan="7" align="right">
 
-						@if (Auth::check())
 						
-						<button type="submit" class="btn btn-danger search checkout"  style="color: white;" aria-label="Left Align">
+						@if (Auth::check())
+	
+
+						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
 							Checkout
 						</button>
 						@else
-					<button type="submit" class="btn btn-default search">
+					<button type="submit" class="btn btn-default search" style="color: white; " aria-label="Left Align">
 					<a href="{{ route('login') }}" >{{ __('Checkout') }} </a></button>
 						@endif
 						</td>
@@ -119,8 +121,8 @@
 				<div class="clearfix"> </div>
 		</div>
 		 --}}
-	</div>
-</div>
+	
+
 <!-- //checkout -->
 @endsection
 

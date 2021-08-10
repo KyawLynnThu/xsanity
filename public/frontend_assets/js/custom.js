@@ -77,7 +77,6 @@ $(document).ready(function(){
       mycartarray = JSON.parse(mycartjson);
 
       for(item of mycartarray){
-        // total += (item.price*item.qty);
         var unitprice = item.price;
 			var discount = item.discount;
 			if (discount) {
@@ -85,7 +84,7 @@ $(document).ready(function(){
 			}else{
 				var price = unitprice;
 			}
-				total += (item.qty*price);
+			total += (item.qty*price);
         html+= `<tr class="rem1">
         				<td class="invert">
 							<div class="rem">
@@ -175,13 +174,7 @@ $(document).ready(function(){
 		`
     
   }
-<<<<<<< HEAD
-  	ul+=`
-  			<li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
-			<li>Total <i>-</i> <span>${amount} Ks</span></li>
-		</ul>`
 
-=======
   ul+=`<ul><li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
 						<li><strong>Total <i>-</i> <span>${amount} Ks</span></strong></li>
 						</ul>`;
@@ -190,7 +183,6 @@ $(document).ready(function(){
       ul+= `<ul><li>Empty Cart! </li>
 			</ul>`;
     }
->>>>>>> 341945075fea9a6cee24804a6c9373a249481bf9
   $('#product').html(ul);
   $('#tbody').html(html);
   }
