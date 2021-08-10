@@ -22,9 +22,9 @@
                     <th>ID</th>
                     <th>VoucherNumber</th>
                     <th>Date</th>
-                    <th>Customer</th>
                     <th>Total</th>
                     <th>Status</th>
+                    <th>Order Detail</th>
                     
                   </tr>
                   </thead>
@@ -43,10 +43,7 @@
                   
                   
                 </td>
-                <td>
-                  {{$order->user->name}}
-                  
-                </td>
+
                 <td>
                   {{number_format($order->total)}}
                   
@@ -64,7 +61,10 @@
                    <span class='badge rounded-pill bg-danger'> Cancel </span>
                   @endif
 
-                    <a href="{{route('orderdetailpage',Auth::user()->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                    
+                </td>
+                <td>
+                    <a href="{{route('orderdetailpage',Auth::user()->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> View</a>
                 </td>
                 
               </tr>

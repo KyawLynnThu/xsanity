@@ -111,11 +111,11 @@ class PageController extends Controller
         return view('frontend.profile',compact('users','user_role'));
     }
     public function myorder($id){
-         
-        $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
-              ->join('items', 'items.id', '=', 'item_order.item_id')
-              ->where('orders.user_id', '=', $id)
-              ->get(['orders.*']);
+
+
+         $orders = DB::table('orders')
+                 ->where('user_id', '=',$id)
+                 ->get() ;
       
 
         return view('frontend.order',compact('orders'));
@@ -133,6 +133,21 @@ class PageController extends Controller
 
     public function orderdetail($id){
          
+        $info = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->join('users', 'orders.user_id', '=', 'users.id')
+              ->where('orders.user_id', '=', $id)->limit(1)
+              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code','users.*']);
+         
+        $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'items.id', '=', 'item_order.item_id')
+              ->where('orders.user_id', '=', $id)
+              ->get(['orders.*','item_order.*','items.codeno as tcode','items.name as tname','items.price as tprice']);
+      
+
+        return view('frontend.orderdetail',compact('orders','info'));
+
+
         $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
               ->join('items', 'items.id', '=', 'item_order.item_id')
               ->where('orders.user_id', '=', $id)

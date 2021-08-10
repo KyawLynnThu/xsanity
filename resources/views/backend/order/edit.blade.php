@@ -18,43 +18,44 @@
           </div>
         </div>
         <div class="row my-2">
-          @foreach($orderitems as $orderitem)
+          @foreach($orders as $order)
+
             <div class="col-md-12 mb-3">
-              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="status" value="1">
               
-                <button class="btn btn-outline-info"<?php if($orderitem->status>='1') echo "disabled" ?>>
+                <button class="btn btn-outline-info"<?php if($order->status>='1') echo "disabled" ?>>
                 <i class="icofont-tick-mark"></i>Confirm</button>                                      
               </form>
             
 
-              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
             
                 @csrf
                 @method('PUT')
                   <input type="hidden" name="status" value="2">
               
-                  <button class="btn btn-outline-dark"<?php if($orderitem->status>='2') echo "disabled" ?>>
+                  <button class="btn btn-outline-dark"<?php if($order->status>='2') echo "disabled" ?>>
                   <i class="icofont-tick-mark"></i>Deliver</button>                                      
               </form>
-              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
             
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="status" class="d-inline-block" value="3">
               
-                <button class="btn btn-outline-success"<?php if($orderitem->status>='3') echo "disabled" ?>>
+                <button class="btn btn-outline-success"<?php if($order->status>='3') echo "disabled" ?>>
                 <i class="icofont-tick-mark"></i>Success</button>                                      
               </form>
-              <form method="post" action="{{route('order.update',$orderitem->id)}}" class="d-inline-block" enctype="multipart/form-data">
+              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
             
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="status" value="4">
               
-                <button class="btn btn-outline-danger"<?php if($orderitem->status>='4') echo "disabled" ?>>
+                <button class="btn btn-outline-danger"<?php if($order->status>='4') echo "disabled" ?>>
                 <i class="icofont-tick-mark"></i>Cancel</button>                                      
               </form>
           </div>
@@ -102,13 +103,13 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                     @foreach($orderitems as $orderitem)
+                     @foreach($orders as $order)
                   To
                   <address>
-                    <strong>{{$orderitem->name}}</strong><br>
-                    {{$orderitem->address}}<br>
-                    Phone: {{$orderitem->phone}}<br>
-                    Email: {{$orderitem->email}}
+                    <strong>{{$order->user->name}}</strong><br>
+                    {{$order->address}}<br>
+                    Phone: {{$order->phone}}<br>
+                    Email: {{$order->email}}
                   </address>
                    
 
@@ -117,23 +118,24 @@
                 <div class="col-sm-4 invoice-col">
                   <b>Invoice #007612</b><br>
                   <br>
-                  <b>Order ID:</b> {{$orderitem->voucherno}}<br>
+                  <b>Order ID:</b> {{$order->voucherno}}<br>
                   <b>Payment Due:</b> 2/22/2014<br>
                   <b>Account:</b> 968-34567 <br>
                   <b>Order Status:</b> 
 
-                  @if ($orderitem->status=='0')
+                  @if ($order->status=='0')
                   <span class='badge rounded-pill  bg-primary'> Pending </span>
-                  @elseif ($orderitem->status=='1')
+                  @elseif ($order->status=='1')
                    <span class='badge rounded-pill bg-dark '> Confirm </span>
-                   @elseif ($orderitem->status=='2')
+                   @elseif ($order->status=='2')
                    <span class='badge rounded-pill bg-success '> Deliver </span>
-                    @elseif ($orderitem->status=='3')
+                    @elseif ($order->status=='3')
                    <span class='badge rounded-pill bg-success'> Success </span>
-                   @elseif ($orderitem->status=='4')
+                   @elseif ($order->status=='4')
                    <span class='badge rounded-pill bg-success'> Cancel </span>
                   @endif
                   
+                  @endforeach
                 </div>
                 
                 <!-- /.col -->
@@ -154,15 +156,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                      
+                        @foreach($orderitems as $orderitem)
                     <tr>
+                      
                       <td>{{$orderitem->qty}}</td>
                       <td>{{$orderitem->tname}}</td>
                       <td>{{$orderitem->code}}</td>
                       <td>{{$orderitem->tprice}}</td>
                       
                       <td>{{$orderitem->total}}</td>
+                      
                     </tr>
+                     @endforeach
                     
                    
                     </tbody>
@@ -191,13 +196,14 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                  <h3 >Total : {{$orderitem->total}}</h3>
+                  @foreach($orders as $order)
+                  <h3 >Total : {{$order->total}}</h3>
 
                   <div class="table-responsive">
                     <table class="table">
                       <tr>
                         <th style="width:50%">Subtotal:</th>
-                        <td>{{$orderitem->total}}</td>
+                        <td>{{$order->total}}</td>
                       </tr>
                       <tr>
                         <th>Tax (9.3%)</th>
@@ -221,7 +227,7 @@
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
-                  <a href="{{route('order.edit',$orderitem->id)}}" rel="noopener" target="_blank" class="btn btn-default float-right printbtn"><i class="fas fa-print"></i> Print</a>
+                  <a href="{{route('order.edit',$order->id)}}" rel="noopener" target="_blank" class="btn btn-default float-right printbtn"><i class="fas fa-print"></i> Print</a>
                   
                 </div>
               </div>

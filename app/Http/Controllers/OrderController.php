@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Item;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -89,9 +90,21 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        $orders = DB::table('orders')
-                ->where('id', '=',$order->id) ;
-       
+
+        $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->join('users', 'orders.user_id', '=', 'users.id')
+              ->where('item_order.order_id', '=', $order->id)->limit(1)
+              ->get(['orders.*','item_order.*','items.name as tname','items.price as tprice','items.codeno as code','users.*']);
+
+        // $orders = DB::table('orders')
+        //         ->where('id', '=',$order->id)
+        //         ->get() ;
+
+       // $users=DB::table('item_order')
+       //          ->where('id', '=',$order->id)
+       //          ->get() ;
+
         $orderitems = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
               ->join('items', 'item_order.item_id', '=', 'items.id')
               ->join('users', 'orders.user_id', '=', 'users.id')

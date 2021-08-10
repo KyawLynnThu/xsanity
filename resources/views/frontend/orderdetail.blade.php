@@ -50,7 +50,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                     @foreach($orders as $order)
+                     @foreach($info as $order)
                   To
                   <address>
                     <strong>{{$order->user->name}}</strong><br>
@@ -81,6 +81,8 @@
                    @elseif ($order->status=='4')
                    <span class='badge rounded-pill bg-success'> Cancel </span>
                   @endif
+
+                  @endforeach
                   
                 </div>
                 
@@ -102,7 +104,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                      
+                      @foreach($orders as $order)
                     <tr>
                       <td>{{$order->qty}}</td>
                       <td>{{$order->tname}}</td>
@@ -112,7 +114,7 @@
                       <td>{{$order->total}}</td>
                     </tr>
                     
-                   
+                   @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -124,6 +126,7 @@
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
+                  @foreach($info as $order)
                     <br>
                     <h3> Customer Note</h3>
                    
@@ -138,7 +141,7 @@
                 
                 </div>
                 <!-- /.col -->
-                <div class="col-6">
+                <div class="col-6 ">
                   <h3 >Total : {{$order->total}}</h3>
 
                   <div class="table-responsive">
@@ -167,12 +170,7 @@
               <!-- /.row -->
 
               <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-12">
-                  <a href="{{route('order.edit',$order->id)}}" rel="noopener" target="_blank" class="btn btn-default float-right printbtn"><i class="fas fa-print"></i> Print</a>
-                  
-                </div>
-              </div>
+           
                @endforeach
             </div>
             <!-- /.invoice -->
