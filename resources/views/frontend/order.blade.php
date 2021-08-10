@@ -64,7 +64,7 @@
                    <span class='badge rounded-pill bg-danger'> Cancel </span>
                   @endif
 
-
+                    <a href="{{route('orderdetailpage',Auth::user()->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                 </td>
                 
               </tr>

@@ -131,5 +131,15 @@ class PageController extends Controller
         return response()->json($data);
     }
 
+    public function orderdetail($id){
+         
+        $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'items.id', '=', 'item_order.item_id')
+              ->where('orders.user_id', '=', $id)
+              ->get(['orders.*','item_order.*','items.codeno as tcode','items.name as tname','items.price as tprice']);
+      
+
+        return view('frontend.orderdetail',compact('orders'));
+    }
 
 }
