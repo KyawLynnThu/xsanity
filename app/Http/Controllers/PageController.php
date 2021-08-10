@@ -59,7 +59,8 @@ class PageController extends Controller
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	return view('frontend.offer',compact('categories','subcategories'));
+        $items = Item::all();
+    	return view('frontend.offer',compact('categories','subcategories','items'));
     }
     public function contact(){
     	$categories = Category::all();
@@ -96,6 +97,13 @@ class PageController extends Controller
 
         return view('backend.order.print',compact('orders1','orderitems'));
     }
-
+    public function autocomplete(Request $request)
+    {
+        $data = DB::table('items')
+                ->where("name","LIKE","%{$request->query}%")
+                ->get();
+   
+        return response()->json($data);
+    }
 
 }

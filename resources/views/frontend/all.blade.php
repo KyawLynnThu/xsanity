@@ -18,7 +18,7 @@
 					<h2>Categories</h2>
 					<ul class="cate">
 						@foreach($subcategories as $subcategory)
-						<li><a href="products.html"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{$subcategory->name}}</a></li>
+						<li><a href="{{route('allpage',$subcategory->id)}}"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{$subcategory->name}}</a></li>
 						@endforeach
 					</ul>
 				</div>																																												
@@ -47,7 +47,7 @@
 				</div>
 				<div class="agile_top_brands_grids">
 					@foreach($navitem as $item)
-					<div class="col-md-4 top_brand_left">
+					<div class="col-md-4 top_brand_left" style="margin-bottom: 10px;">
 						<div class="hover14 column">
 							<div class="agile_top_brand_left_grid">								
 								<div class="agile_top_brand_left_grid1">
@@ -59,19 +59,18 @@
 												</a>		
 												<p>{{$item->name}}</p>
 												@php
-									                if($item->discount){
-									            @endphp
-									              	<span class="d-block"><h4>{{$item->discount}} Ks</h4></span>
-									              	<strike><h4>{{$item->price}} Ks</h4> </strike> 
-									            @php
-									                } else {
-									            @endphp
-									              	<span class="d-block"> <h4>{{$item->price}} Ks</h4></span>
-									            @php
-									             	}
-									            @endphp
+									                  if($item->discount){
+									                @endphp
+									                	<h4>{{$item->discount}} Ks <span>{{$item->price}} Ks</span></h4>
+									                @php
+									                  } else {
+									                @endphp
+									                  <h4>{{$item->price}} Ks </h4>
+									                @php
+									                  }
+									                @endphp
 											</div>
-											<div class="snipcart-details top_brand_home_details">
+											{{-- <div class="snipcart-details top_brand_home_details">
 												<form action="#" method="post">
 													<fieldset>
 														<input type="hidden" name="cmd" value="_cart">
@@ -86,6 +85,10 @@
 														<input type="submit" name="submit" value="Add to cart" class="button">
 													</fieldset>
 												</form>
+											</div> --}}
+											<div class="snipcart-details top_brand_home_details"><a href="{{route('cartpage')}}">
+												<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
+
 											</div>
 										</div>
 									</figure>
