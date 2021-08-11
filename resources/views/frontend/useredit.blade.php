@@ -51,7 +51,7 @@
                                 <br>
                    <input id="phone" type="tel" class="form-control" name="phone" required value="{{$user->phone}}" placeholder="Phone Number"> <br>
 
-                     <textarea class="form-control" id="exampleFormControlTextarea1" name="address" value="{{$user->address}}"rows="3"></textarea>
+                     <textarea class="form-control" id="exampleFormControlTextarea1" name="address" rows="3">{{$user->address}}</textarea>
                    
 
                     <div class="register-check-box">

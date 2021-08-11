@@ -68,7 +68,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <a href="{{route('user.edit',Auth::user()->id)}}">{{ Auth::user()->name }}</a>
+                                    <a href="{{route('profilepage',Auth::user()->id)}}">{{ Auth::user()->name }}</a>
+
+                                </a>
+                            </li>
+                             <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href=""role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a href="{{route('myorderpage',Auth::user()->id)}}">My Order</a>
 
                                 </a>
                             </li>
@@ -230,9 +236,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         @else
                             <li class="nav-item dropdown">
                             	<i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <a  id="navbarDropdown" class="nav-link dropdown-toggle" href="{{route('profilepage',Auth::user()->id)}}">{{ Auth::user()->name }}</a>
                                 </a>
+                                </li>
+                                <li>
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                <a href="{{route('myorderpage',Auth::user()->id)}}">
+                                  My Order
+                                </a>
+                                </li>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 	<i class="fa fa-arrow-right" aria-hidden="true"></i>

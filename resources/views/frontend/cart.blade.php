@@ -70,6 +70,7 @@
 	
 						<button type="submit" class="btn btn-default search checkout" style="color: white;" aria-label="Left Align">
 							Checkout
+
 						</button>
 						@else
 						<button type="submit" class="btn btn-default search" style="color: white; " aria-label="Left Align">
@@ -86,8 +87,10 @@
 				<div class="checkout-left-basket">
 					<h4>Order List</h4>
 					<div id="product">
+ 					<ul>
 
 					{{-- <ul>
+>>>>>>> 5b9b4ec9ccb67fd4b708683167dc849fd4e57b3a
 						<li>Product1 <i>-</i> <span>$15.00 </span></li>
 						<li>Product2 <i>-</i> <span>$25.00 </span></li>
 						<li>Product3 <i>-</i> <span>$29.00 </span></li>
@@ -103,26 +106,13 @@
 					<a href="{{ url()->previous() }}"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"  aria-label="Left Align"></span>Continue Shopping</a>
 				</div>
 				<div class="clearfix"> </div>
-			</div>
-		{{-- <div class="checkout-left">	
-				<div class="checkout-left-basket">
-					<h4>Continue to basket</h4>
-					<ul>
-						<li>Product1 <i>-</i> <span>$15.00 </span></li>
-						<li>Product2 <i>-</i> <span>$25.00 </span></li>
-						<li>Product3 <i>-</i> <span>$29.00 </span></li>
-						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
-						<li>Total <i>-</i> <span>$84.00</span></li>
-					</ul>
-				</div>
-				<div class="checkout-right-basket">
-					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
-				</div>
 				<div class="clearfix"> </div>
-		</div>
-		 --}}
+			</div>
+		 
+	</div>
+</div>
+		
 	
-
 <!-- //checkout -->
 @endsection
 

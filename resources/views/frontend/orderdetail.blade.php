@@ -1,89 +1,36 @@
-@extends('layouts.backendtemplate')
+@extends('layouts.frontendtemplate')
+
 @section('content')
-
-
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Invoice</h1> <br>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Invoice</li>
+<!-- breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+                <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+                <li class="active">Profile</li>
             </ol>
-          </div>
         </div>
-        <div class="row my-2">
-          @foreach($orders as $order)
+    </div>
+<!-- //breadcrumbs -->
 
-            <div class="col-md-12 mb-3">
-              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="status" value="1">
-              
-                <button class="btn btn-outline-info"<?php if($order->status>='1') echo "disabled" ?>>
-                <i class="icofont-tick-mark"></i>Confirm</button>                                      
-              </form>
-            
 
-              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
-            
-                @csrf
-                @method('PUT')
-                  <input type="hidden" name="status" value="2">
-              
-                  <button class="btn btn-outline-dark"<?php if($order->status>='2') echo "disabled" ?>>
-                  <i class="icofont-tick-mark"></i>Deliver</button>                                      
-              </form>
-              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
-            
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="status" class="d-inline-block" value="3">
-              
-                <button class="btn btn-outline-success"<?php if($order->status>='3') echo "disabled" ?>>
-                <i class="icofont-tick-mark"></i>Success</button>                                      
-              </form>
-              <form method="post" action="{{route('order.update',$order->order_id)}}" class="d-inline-block" enctype="multipart/form-data">
-            
-                @csrf
-                @method('PUT')
-                <input type="hidden" name="status" value="4">
-              
-                <button class="btn btn-outline-danger"<?php if($order->status>='4') echo "disabled" ?>>
-                <i class="icofont-tick-mark"></i>Cancel</button>                                      
-              </form>
-          </div>
-          @endforeach
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+<!-- register -->
+    <div class="register">
+        <div class="container">
+                <div class="content-wrapper">
+                    <h1>Invoice</h1> <br>
+    <!-- Content Header (Page header) -->
+  
 
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-            </div>
-
-
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
               <!-- title row -->
                
               <div class="row">
                 <div class="col-12">
-                  <h4>
-                    <i class="fas fa-globe"></i> AdminLTE, Inc.
-                    <small class="float-right">Date: 2/10/2014</small>
-                  </h4>
                 </div>
                 <!-- /.col -->
               </div>
@@ -103,13 +50,13 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                     @foreach($orders as $order)
+                     @foreach($info as $order)
                   To
                   <address>
                     <strong>{{$order->user->name}}</strong><br>
-                    {{$order->address}}<br>
-                    Phone: {{$order->phone}}<br>
-                    Email: {{$order->email}}
+                    {{$order->user->address}}<br>
+                    Phone: {{$order->user->phone}}<br>
+                    Email: {{$order->user->email}}
                   </address>
                    
 
@@ -134,8 +81,9 @@
                    @elseif ($order->status=='4')
                    <span class='badge rounded-pill bg-success'> Cancel </span>
                   @endif
-                  
+
                   @endforeach
+                  
                 </div>
                 
                 <!-- /.col -->
@@ -156,20 +104,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($orderitems as $orderitem)
+                      @foreach($orders as $order)
                     <tr>
+                      <td>{{$order->qty}}</td>
+                      <td>{{$order->tname}}</td>
+                      <td>{{$order->tcode}}</td>
+                      <td>{{$order->tprice}}</td>
                       
-                      <td>{{$orderitem->qty}}</td>
-                      <td>{{$orderitem->tname}}</td>
-                      <td>{{$orderitem->code}}</td>
-                      <td>{{$orderitem->tprice}}</td>
-                      
-                      <td>{{$orderitem->total}}</td>
-                      
+                      <td>{{$order->total}}</td>
                     </tr>
-                     @endforeach
                     
-                   
+                   @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -181,22 +126,22 @@
               <div class="row">
                 <!-- accepted payments column -->
                 <div class="col-6">
+                  @foreach($info as $order)
                     <br>
                     <h3> Customer Note</h3>
                    
                  <div class="col-10 mt-3">
                   <div class="col-sm-12 invoice-col">
-                  {{$orderitem->note}}
+                  {{$order->note}}
                 </div>
 
-                    <!-- <span class="border">{{$orderitem->note}}</span> -->
+                 
                     
                   </div>
                 
                 </div>
                 <!-- /.col -->
-                <div class="col-6">
-                  @foreach($orders as $order)
+                <div class="col-6 ">
                   <h3 >Total : {{$order->total}}</h3>
 
                   <div class="table-responsive">
@@ -225,12 +170,7 @@
               <!-- /.row -->
 
               <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-12">
-                  <a href="{{route('order.edit',$order->id)}}" rel="noopener" target="_blank" class="btn btn-default float-right printbtn"><i class="fas fa-print"></i> Print</a>
-                  
-                </div>
-              </div>
+           
                @endforeach
             </div>
             <!-- /.invoice -->
@@ -240,18 +180,10 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.container-fluid -->
+        </div>
+    </div>
+<!-- //register -->
 @endsection
 
-@section('script1')
-<script>
 
-  $(document).ready(function(){
-      $('.printbtn').click(function(){
-        window.addEventListener("load", window.print());
-      })
-    })
- 
-</script>
 
-@endsection

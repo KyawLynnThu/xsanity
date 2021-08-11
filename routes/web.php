@@ -32,8 +32,12 @@ Route::get('/search_item','PageController@search')->name('search');
 
 
 
+
 Route::prefix('data-management')->middleware('auth')->group(function(){
 Route::resource('user', 'UserController');
+Route::get('/profile/{id}','PageController@profile')->name('profilepage');
+Route::get('/myorder/{id}','PageController@myorder')->name('myorderpage');
+Route::get('/orderdetail/{id}','PageController@orderdetail')->name('orderdetailpage');
 });
 
 Route::prefix('data-management')->middleware('auth','role:admin')->group(function(){
