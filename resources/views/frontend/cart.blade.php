@@ -68,13 +68,13 @@
 						
 						@if (Auth::check())
 	
-
-						<button type="submit" class="btn btn-default search checkout" style="color: white; " aria-label="Left Align">
+						<button type="submit" class="btn btn-default search checkout" style="color: white;" aria-label="Left Align">
 							Checkout
 						</button>
 						@else
-					<button type="submit" class="btn btn-default search" style="color: white; " aria-label="Left Align">
-					<a href="{{ route('login') }}" >{{ __('Checkout') }} </a></button>
+						<button type="submit" class="btn btn-default search" style="color: white; " aria-label="Left Align">
+						
+						<a href="{{ route('login') }}" style="color: white;" >{{ __('Checkout') }} </a></button>
 						@endif
 						</td>
 					</tr>

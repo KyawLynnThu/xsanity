@@ -5,7 +5,7 @@
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">All Items</li>
+				<li class="active">Search Items</li>
 			</ol>
 		</div>
 	</div>
@@ -13,21 +13,31 @@
 <!--- groceries --->
 	<div class="products">
 		<div class="container">
-			<div class="col-md-4 products-left">
-				<div class="categories">
-					<h2>Categories</h2>
-					<ul class="cate">
-						@foreach($subcategories as $subcategory)
-						<li><a href="{{route('allpage',$subcategory->id)}}"><i class="fa fa-arrow-right" aria-hidden="true"></i>{{$subcategory->name}}</a></li>
-						@endforeach
-					</ul>
-				</div>																																												
-			</div>
-			<div class="col-md-8 products-right">
-				
+			<div class="col-md-12 products-right">
+				{{-- <div class="products-right-grid">
+					<div class="products-right-grids">
+						<div class="sorting">
+							<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option> 
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>					
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>								
+							</select>
+						</div>
+						<div class="sorting-left">
+							<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option> 
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>					
+								<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>								
+							</select>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div> --}}
 				<div class="agile_top_brands_grids">
-					@foreach($navitem as $item)
-					<div class="col-md-4 top_brand_left" style="margin-bottom: 10px;">
+					@foreach($items as $item)
+					<div class="col-md-3 top_brand_left" style="margin-bottom: 10px;">
 						<div class="hover14 column">
 							<div class="agile_top_brand_left_grid">								
 								<div class="agile_top_brand_left_grid1">
@@ -81,7 +91,8 @@
 				</div>
 				<nav class="numbering">
 					<ul class="pagination paging">
-						<li>
+						{{$items->links()}}
+						{{-- <li>
 							<a href="#" aria-label="Previous">
 								<span aria-hidden="true">&laquo;</span>
 							</a>
@@ -95,7 +106,7 @@
 							<a href="#" aria-label="Next">
 							<span aria-hidden="true">&raquo;</span>
 							</a>
-						</li>
+						</li> --}}
 					</ul>
 				</nav>
 			</div>

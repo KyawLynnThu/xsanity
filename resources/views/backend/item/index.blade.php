@@ -75,6 +75,7 @@
                       <td>{{$item->subcategory->name}}</td>
                       <td>
                         <a href="{{route('item.edit',$item->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('item.show',$item->id)}}" class="btn btn-sm btn-info"><i class="fas fa-comments"></i></a>
                         <a href="#" data-id="{{route('item.destroy',$item->id)}}" class="btn btn-danger btn-sm deletebtn"><i class="fas fa-trash-alt"></i></a>
                       </td>
                     </tr>

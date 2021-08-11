@@ -118,17 +118,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		
 
-		{{-- search --}}
-		{{-- <div class="w3l_search">
-			<form action="" method="">
-				<input type="search" name="Search" class="typeahead" placeholder="Search for a Product..." required="">
+		<div class="w3l_search">
+			<form action="{{route('search')}}" method="GET">
+				@csrf
+				<input type="search" name="search_data" placeholder="Search for a Product..." required="">
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
 				<div class="clearfix"></div>
 			</form>
-		</div> --}}
-		<input class="typeahead form-control" type="text">
+		</div>
 			
 			<div class="clearfix"> </div>
 		</div>
@@ -151,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="{{route('homepage')}}" class="act">Home</a></li>	
 									<!-- Mega Menu -->
-									{{-- @foreach($categories as $category)
+									@foreach($categories as $category)
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$category->name}}<b class="caret"></b></a>
 										<ul class="dropdown-menu multi-column columns-3">
@@ -172,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</ul>
 									</li>
-									@endforeach	 --}}							
+									@endforeach								
 														
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>
@@ -201,21 +200,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Information</h3>
 					<ul class="info"> 
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="">About Us</a></li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('aboutpage')}}">About Us</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('contactpage')}}">Contact Us</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="">Short Codes</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="">FAQ's</a></li>
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('faqpage')}}">FAQ's</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{route('offerpage')}}">Special Products</a></li>
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Category</h3>
-					<ul class="info"> 
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
+					<ul class="info">
+						@foreach($categories as $category)
+						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="">{{$category->name}}</a></li>
+						@endforeach
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">
@@ -304,17 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 	</script>
 <!-- //here ends scrolling icon -->
-{{-- <script src="{{asset('frontend_assets/js/minicart.min.js')}}"></script>
-<script>
-	// Mini Cart
-	paypal.minicart.render({
-		action: '#'
-	});
 
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
-	}
-</script> --}}
 {{-- Jquery CDN --}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <!-- main slider-banner -->

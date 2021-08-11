@@ -40,13 +40,44 @@
 					</div>
 					<div class="snipcart-details agileinfo_single_right_details">
 						<a href="{{route('cartpage')}}">
-						<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>									
+						<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
+					</div><br>
+
+
+					<div class="snipcart-details agileinfo_single_right_details">
+						
+						  <button class="btn" type="button" data-toggle="collapse" data-target="#commentId" aria-expanded="false" aria-controls="collapseExample" style="background-color: #EC7063; color: white; border-color: #EC7063; font-style: normal; margin-bottom: 10px;">
+						    <i class="fa fa-comments-o"></i>Click Here To Write Reviews
+						  </button><span>{{$comments->count()}} Comments</span>
+						
+						<div class="collapse" id="commentId">
+						  <form action="{{route('commentcreate',$item->id)}}" method="POST">
+						  	@csrf
+						  	<textarea name="comment" class="form-control" placeholder="Comment" style="margin-bottom: 10px;" required></textarea><br>
+
+						  	<button class="btn btn-info">
+						  		
+						  	 Submit
+						  	</button>
+						  </form>
+						  <br>
+						  @foreach($comments as $comment)
+						  <div>
+						  	<strong>{{$comment->user->name}}</strong>
+						  	<div class="message-box">
+						  		{{$comment->name}}
+						  	</div>
+						  </div>
+						  @endforeach
+						</div>		
 					</div>
+					
 				</div>
 				</div>
-				<div class="clearfix"> </div>
+				<div class="clearfix"></div>
+				{{-- @include('frontend.comment'); --}}
 			</div><br><br>
-			<div class="col-md-12" style="margin-top: 20px;">
+			{{-- <div class="col-md-12" style="margin-top: 20px;">
 				<h2 style="text-align: left;">Customer Reviews</h2>
 				<div class="w3agile_description col-md-12">
 					<p class="col-md-12">After 120 days of development and commissioning, the Infinix Team launched Power Marathon Tech. There are two modes for this Tech: "Power Boost" and "Ultra Power Mode", which meet the users' demand for battery life on the premise of not affecting user experience.</p>
@@ -57,11 +88,11 @@
 				  	<div id="rateYo"></div>
  
   
-				  {{-- <div class="form-group">
+				  <div class="form-group">
 				    <label for="exampleFormControlInput1">Email address</label>
 				    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-				  </div> --}}
-				  {{-- <h4 style="margin-top: 10px;">Rating</h4>
+				  </div>
+				  <h4 style="margin-top: 10px;">Rating</h4>
 					<div class="rating1" style="margin-top: 10px;">
 						<span class="starRating">
 							<input id="rating5" type="radio" name="rating" value="5">
@@ -80,10 +111,9 @@
 				    <h4><label for="exampleFormControlTextarea1">Write a Review</label></h4>
 				    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Submit</button> --}}
-				</form>
-				
-			</div>
+				  <button type="submit" class="btn btn-primary">Submit</button>
+				</form>			
+			</div> --}}
 		</div>
 	</div>
 <!-- new -->
@@ -136,7 +166,7 @@
 @endsection
 @section('script')
 <script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 	$(function () {
  
   $("#rateYo").rateYo({
@@ -144,6 +174,6 @@
   });
  
 });
-</script>
+</script> --}}
 
 @endsection

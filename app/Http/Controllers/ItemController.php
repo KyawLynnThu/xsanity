@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Subcategory;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -82,11 +83,25 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show($id)
     {
-        //
-    }
+        $comments = Comment::where('item_id',$id)->get();
 
+        return view('backend.item.comment',compact('comments'));
+    }
+    public function showhideComment($id){
+        $comment = Comment::findOrFail($id);
+        if($comment->status == 'show'){
+            $comment->update([
+                'status' => 'hide',
+            ]);
+        }else{
+             $comment->update([
+                'status' => 'show',
+            ]);
+        }     
+        return back()->with('successMsg','Comment status changed successfully');
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Comment extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['name','user_id','item_id'];
+    protected $fillable = ['name','user_id','item_id','status'];
 
     public function item(){
     	return $this->belongsTo('App\Item');
@@ -17,5 +17,6 @@ class Comment extends Model
     public function user(){
     	return $this->belongsTo('App\User');
     }
+
 
 }

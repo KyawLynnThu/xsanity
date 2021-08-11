@@ -1,5 +1,4 @@
 @extends('layouts.frontendtemplate')
-
 @section('content')
 <!-- breadcrumbs -->
     <div class="breadcrumbs">

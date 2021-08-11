@@ -33,7 +33,17 @@ class HomeController extends Controller
             return redirect()->route('category.index');
         }else{
             return redirect()->route('homepage');
+            // $this->showLoginForm();
         }
         
     }
+    // public function showLoginForm(){
+    //     $previousURL = url()->previous();
+    //     $baseURL = url()->to('/');
+
+    //     if($previousURL != $baseURL.'/login'){
+    //         session()->put('url.intended',$previousURL);
+    //     }
+    //     return view('auth.login');
+    // }
 }

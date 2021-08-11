@@ -20,12 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PageController@index')->name('homepage');
 Route::get('/all/{id}','PageController@all')->name('allpage');
 Route::get('/cart','PageController@cart')->name('cartpage');
+Route::get('/about','PageController@about')->name('aboutpage');
+Route::get('/faq','PageController@faq')->name('faqpage');
 Route::get('/contact','PageController@contact')->name('contactpage');
 Route::get('/offer','PageController@offer')->name('offerpage');
 Route::get('/login','PageController@login')->name('loginpage');
 Route::get('/register','PageController@register')->name('registerpage');
 Route::get('/detail/{id}','PageController@detail')->name('detailpage');
-Route::get('/autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+Route::post('/comment/{id}','CommentController@create')->name('commentcreate');
+Route::get('/search_item','PageController@search')->name('search');
 
 
 
@@ -40,6 +43,7 @@ Route::resource('subcategory', 'SubcategoryController');
 Route::resource('item','ItemController');
 Route::resource('rating','RatingController');
 Route::resource('comment', 'CommentController');
+Route::post('showhide/{id}','ItemController@showhideComment')->name('showhide');
 
 Route::get('/customer','PageController@customer')->name('customerpage');
 Route::get('/print','PageController@print')->name('print');

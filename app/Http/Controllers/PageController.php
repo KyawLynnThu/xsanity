@@ -8,6 +8,7 @@ use App\Category;
 use App\Subcategory;
 use App\User;
 use App\Order;
+use App\Comment;
 use DB;
 
 class PageController extends Controller
@@ -16,18 +17,19 @@ class PageController extends Controller
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-    	$items = Item::all();
-    	return view('frontend.index',compact('categories','subcategories','items'));
+        $offeritems = Item::where('discount','!=', 'NULL' )->limit(4)->get();
+    	return view('frontend.index',compact('categories','subcategories','offeritems'));
     }
     public function detail($id){
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
     	$item = Item::find($id);
+        $comments = Comment::where('item_id',$id)->where('status','show')->get();
         $related_item = Item::where('subcategory_id', $item['subcategory']['id'])->where('id','!=',$id)->limit(4)->inRandomOrder()->get()->toArray();
         // dd($related_item);die;
 
-    	return view('frontend.detail',compact('categories','subcategories','item','related_item'));
+    	return view('frontend.detail',compact('categories','subcategories','item','related_item','comments'));
     }
     public function all($id){
     	$categories = Category::all();
@@ -68,6 +70,18 @@ class PageController extends Controller
 
     	return view('frontend.contact',compact('categories','subcategories'));
     }
+    public function about(){
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+
+        return view('frontend.about',compact('categories','subcategories'));
+    }
+    public function faq(){
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+
+        return view('frontend.faq',compact('categories','subcategories'));
+    }
     public function customer(){
          $users = User::join('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
               ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
@@ -97,13 +111,17 @@ class PageController extends Controller
 
         return view('backend.order.print',compact('orders1','orderitems'));
     }
-    public function autocomplete(Request $request)
-    {
-        $data = DB::table('items')
-                ->where("name","LIKE","%{$request->query}%")
-                ->get();
-   
-        return response()->json($data);
-    }
+    public function search(Request $request){
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        $searchData = $request->search_data;
 
+        $items = Item::where('name','like', "%".$searchData."%")
+                    ->orWhere('description','like',"%".$searchData."%")
+                    ->orWhere('rate','like',"%".$searchData."%")
+                    ->orWhere('release_year','like',"%".$searchData."%")
+                    ->latest()
+                    ->paginate(12);
+        return view('frontend.search',compact('categories','subcategories','items'));
+    }
 }
