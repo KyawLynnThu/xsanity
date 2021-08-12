@@ -37,7 +37,8 @@
 													<img src="{{asset('storage/'.$item->photo)}}" style="height: 100px;">
 												</a>	
 												<p style="height: 100px;">{{$item->name}}</p>
-												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
+												
 													@php
 									                  if($item->discount){
 									                @endphp

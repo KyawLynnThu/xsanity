@@ -44,29 +44,7 @@
 											<div class="snipcart-thumb">
 												<a href="{{route('detailpage',$item->id)}}"><img title=" " alt=" " src="{{'storage/'.$item->photo}}" style="height: 100px;"></a>		
 												<p style="height: 60px;">{{$item->name}}</p><br>
-												@php $rating =  $item['rate']; @endphp
-												<div class="pl-5" style="padding-left: 50px"> 
-												<div class="placeholder" style="color: lightgray;">
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <span class="small">({{ $rating }})</span>
-									        </div>
-												<div class="overlay"  style="position: relative;top: -22px;">
-            
-           										 @while($rating>0)
-									                @if($rating >0.5)
-									                    <i class="fa fa-star blue-star"></i>
-									                @else
-									                    <i class="fa fa-star blue-star-half"></i>
-									                @endif
-									                @php $rating--; @endphp
-									            @endwhile
-
-       											 </div>
-       											</div>
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
 
 												{{-- <h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4> --}}
 													@php

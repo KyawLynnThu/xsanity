@@ -15,10 +15,11 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->integer('rating_count');
+            $table->integer('rating_count', range(1, 5));
             $table->text('review');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
+            //$table->string('status',["visible","hidden"])->default("hidden");
             $table->timestamps();
             $table->softDeletes();
 

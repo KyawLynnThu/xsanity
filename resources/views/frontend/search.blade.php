@@ -48,6 +48,7 @@
 													<img src="{{asset('storage/'.$item->photo)}}" style="height: 100px;">
 												</a>		
 												<p style="height: 100px;">{{$item->name}}</p>
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
 												@php
 									                  if($item->discount){
 									                @endphp
@@ -76,6 +77,9 @@
 													</fieldset>
 												</form>
 											</div> --}}
+
+
+
 											<div class="snipcart-details top_brand_home_details"><a href="{{route('cartpage')}}">
 												<input type="submit" name="submit" value="Add to cart" class="button add-to-cart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-photo="{{'storage/'.$item->photo}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}" data-code="{{$item->codeno}}" /></a>
 

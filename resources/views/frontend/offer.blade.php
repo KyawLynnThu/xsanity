@@ -33,7 +33,7 @@
 														<div class="snipcart-thumb">
 															<a href="{{route('detailpage',$item->id)}}"><img title=" " alt=" " src="{{'storage/'.$item->photo}}" style="height: 100px;" /></a>		
 															<p style="height: 80px;">{{$item->name}}</p>
-															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
+															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
 															{{-- <div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
 									                        @php
 									                          }
 									                        @endphp
-														</div>
+														
 														{{-- <div class="snipcart-details top_brand_home_details">
 															<form action="#" method="post">
 																<fieldset>
@@ -102,7 +102,7 @@
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star gray-star" aria-hidden="true"></i>
 															</div> --}}
-															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
+															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
 															@php
 									                          if($item->discount){
 									                        @endphp

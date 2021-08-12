@@ -19,27 +19,7 @@
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
 				<h2>{{$item->name}}</h2>
-				@php $rating =  $item['rate']; @endphp
-												<div class="placeholder" style="color: lightgray;">
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <span class="small">({{ $rating }})</span>
-									        </div>
-												<div class="overlay" style="position: relative;top: -22px;">
-            
-           										 @while($rating>0)
-									                @if($rating >0.5)
-									                    <i class="fa fa-star blue-star"></i>
-									                @else
-									                    <i class="fa fa-star blue-star-half"></i>
-									                @endif
-									                @php $rating--; @endphp
-									            @endwhile
-
-       											 </div>
+				<h4 class="star" align="left"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item['rate']}}/10 </h4>
 				<div class="w3agile_description">
 					<h4>Description :</h4>
 					<p>{{$item->description}}</p>
@@ -163,30 +143,8 @@
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star gray-star" aria-hidden="true"></i>
 												</div> --}}
-												{{-- <h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$related['rate']}}/10 </h4> --}}
-												<div class="pl-5" style="padding-left: 50px">
-												@php $rating =  $related['rate']; @endphp
-												<div class="placeholder" style="color: lightgray;">
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <i class="fa fa-star"></i>
-									            <span class="small">({{ $rating }})</span>
-									        </div>
-												<div class="overlay" style="position: relative;top: -22px;">
-            
-           										 @while($rating>0)
-									                @if($rating >0.5)
-									                    <i class="fa fa-star blue-star"></i>
-									                @else
-									                    <i class="fa fa-star blue-star-half"></i>
-									                @endif
-									                @php $rating--; @endphp
-									            @endwhile
-
-       											 </div>
-       											 </div>
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$related['rate']}}/10 </h4>
+												
 													@php
 									                  if($item['discount']){
 									                @endphp
