@@ -24,8 +24,39 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('backend.order.index',compact('orders'));
+
+    $active = 0;
+    $todaydate= date('Y-m-d');
+
+    if(isset($_POST['search'])){
+        
+    $startdate=$_POST['startDate'];
+    $enddate=$_POST['endDate'];
+    
+    $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->join('users', 'orders.user_id', '=', 'users.id')
+                ->whereBetween('orders.orderdate', [$startdate, $enddate])
+                ->orderBy('created_at', 'desc')
+                ->get('orders.*');
+
+                return view('backend.order.index',compact('orders'));
+   
+    }else{
+
+    
+   $orders = Order::join('item_order', 'item_order.order_id', '=', 'orders.id')
+              ->join('items', 'item_order.item_id', '=', 'items.id')
+              ->join('users', 'orders.user_id', '=', 'users.id')
+                ->orderBy('created_at', 'desc')
+                ->get('orders.*');
+
+
+    return view('backend.order.index',compact('orders'));
+
+   
+
+    }
     }
 
     /**
