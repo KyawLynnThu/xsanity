@@ -44,6 +44,7 @@ class ItemController extends Controller
             "name" => "required|unique:categories|max:191|min:5",
             "code" => "required",
             "photo" => "required|mimes:jpeg,jpg,png",
+            "rate"=> "integer|between:0,5",
             "price" => "required",
             "description" => "required",
             "release_year" => "required",
@@ -129,6 +130,7 @@ class ItemController extends Controller
             "code" => "required",
             "photo" => "required|mimes:jpeg,jpg,png",
             "price" => "required",
+            "rate"=> "integer|between:0,5",
             "description" => "required",
             "release_year" => "required",
             "subcategory" => "required"
