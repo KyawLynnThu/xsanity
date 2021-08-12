@@ -61,8 +61,9 @@ class PageController extends Controller
     	$categories = Category::all();
     	$subcategories = Subcategory::all();
 
-        $items = Item::all();
-    	return view('frontend.offer',compact('categories','subcategories','items'));
+        $todayoffers = Item::where('discount','!=', 'NULL' )->latest()->limit(6)->get();
+        $offeritems = Item::where('discount','!=', 'NULL' )->limit(6)->get();
+    	return view('frontend.offer',compact('categories','subcategories','todayoffers','offeritems'));
     }
     public function contact(){
     	$categories = Category::all();

@@ -24,7 +24,6 @@
 				</div>																																												
 			</div>
 			<div class="col-md-8 products-right">
-				
 				<div class="agile_top_brands_grids">
 					@foreach($navitem as $item)
 					<div class="col-md-4 top_brand_left" style="margin-bottom: 10px;">
@@ -36,9 +35,10 @@
 											<div class="snipcart-thumb">
 												<a href="{{route('detailpage',$item->id)}}">
 													<img src="{{asset('storage/'.$item->photo)}}" style="height: 100px;">
-												</a>		
-												<p>{{$item->name}}</p>
-												@php
+												</a>	
+												<p style="height: 100px;">{{$item->name}}</p>
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
+													@php
 									                  if($item->discount){
 									                @endphp
 									                	<h4>{{$item->discount}} Ks <span>{{$item->price}} Ks</span></h4>
@@ -79,7 +79,7 @@
 					@endforeach
 						<div class="clearfix"> </div>
 				</div>
-				<nav class="numbering">
+				{{-- <nav class="numbering">
 					<ul class="pagination paging">
 						<li>
 							<a href="#" aria-label="Previous">
@@ -97,10 +97,13 @@
 							</a>
 						</li>
 					</ul>
-				</nav>
+				</nav> --}}
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
 <!--- groceries --->
+@endsection
+@section('script')
+	<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection

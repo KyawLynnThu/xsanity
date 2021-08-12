@@ -66,6 +66,9 @@
     </div>
 <!-- //register -->
 @endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
+@endsection
 
 
 

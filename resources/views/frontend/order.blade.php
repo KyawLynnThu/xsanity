@@ -6,7 +6,7 @@
         <div class="container">
             <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
                 <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-                <li class="active">Profile</li>
+                <li class="active">My Order</li>
             </ol>
         </div>
     </div>
@@ -64,7 +64,7 @@
                     
                 </td>
                 <td>
-                    <a href="{{route('orderdetailpage',Auth::user()->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> View</a>
+                    <a href="{{route('orderdetailpage',Auth::user()->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-eye"></i> View</a>
                 </td>
                 
               </tr>
@@ -75,6 +75,9 @@
         </div>
     </div>
 <!-- //register -->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection
 
 

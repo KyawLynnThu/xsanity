@@ -43,14 +43,15 @@
 										<div class="snipcart-item block">
 											<div class="snipcart-thumb">
 												<a href="{{route('detailpage',$item->id)}}"><img title=" " alt=" " src="{{'storage/'.$item->photo}}" style="height: 100px;"></a>		
-												<p>{{$item->name}}</p>
-												<div class="stars">
+												<p style="height: 60px;">{{$item->name}}</p><br>
+												{{-- <div class="stars">
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star blue-star" aria-hidden="true"></i>
 													<i class="fa fa-star gray-star" aria-hidden="true"></i>
-												</div>
+												</div> --}}
+												<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
 													@php
 									                  if($item->discount){
 									                @endphp

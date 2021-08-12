@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="callout callout-info">
               <h5><i class="fas fa-info"></i> Note:</h5>
-              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+              You Can Print the Invoice by clicking the print button at the bottom of the page.
             </div>
 
 
@@ -37,7 +37,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas fa-globe"></i> AdminLTE, Inc.
+                    <i class="fas fa-globe"></i> sanity, Inc.
                     <small class="float-right">Date: 2/10/2014</small>
                   </h4>
                 </div>

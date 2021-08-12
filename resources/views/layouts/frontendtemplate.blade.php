@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="display" value="1"> --}}
 				<a href="{{route('cartpage')}}" style="color: red; font-size: 30px;">
-					<i class="fa fa-cart-arrow-down" aria-hidden="true">
+					<i class="fa fa-shopping-cart" aria-hidden="true">
 						<span class="badge count" style="font-size: 5px; border: 1px solid red; border-radius: 50%; background-color: red;"></span>
 					</i>
 					<h6 class="cartTotal" style="color: red;"></h6>
@@ -215,9 +215,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 w3_footer_grid">
 					<h3>Category</h3>
 					<ul class="info">
-						@foreach($categories as $category)
+						{{-- @foreach($categories as $category)
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="">{{$category->name}}</a></li>
-						@endforeach
+						@endforeach --}}
 					</ul>
 				</div>
 				<div class="col-md-3 w3_footer_grid">

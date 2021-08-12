@@ -47,7 +47,7 @@
 												<a href="{{route('detailpage',$item->id)}}">
 													<img src="{{asset('storage/'.$item->photo)}}" style="height: 100px;">
 												</a>		
-												<p>{{$item->name}}</p>
+												<p style="height: 100px;">{{$item->name}}</p>
 												@php
 									                  if($item->discount){
 									                @endphp
@@ -114,4 +114,7 @@
 		</div>
 	</div>
 <!--- groceries --->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection

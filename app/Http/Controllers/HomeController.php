@@ -24,8 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-
         // if admin -> backend
         $roles = Auth::user()->getRoleNames(); // Returns a collection
         
@@ -44,6 +42,7 @@ class HomeController extends Controller
     //     if($previousURL != $baseURL.'/login'){
     //         session()->put('url.intended',$previousURL);
     //     }
-    //     return view('auth.login');
+    //     // return view('auth.login');
+    //     return redirect()->route('login');
     // }
 }

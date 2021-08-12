@@ -23,7 +23,7 @@
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
 							<div class="agile_top_brands_grids">
-								@foreach($items as $item)
+								@foreach($offeritems as $item)
 								<div class="col-md-4 top_brand_left" style="margin-bottom: 20px;">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
@@ -32,14 +32,15 @@
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
 															<a href="{{route('detailpage',$item->id)}}"><img title=" " alt=" " src="{{'storage/'.$item->photo}}" style="height: 100px;" /></a>		
-															<p>{{$item->name}}</p>
-															<div class="stars">
+															<p style="height: 80px;">{{$item->name}}</p>
+															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
+															{{-- <div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star gray-star" aria-hidden="true"></i>
-															</div>
+															</div> --}}
 															@php
 									                          if($item->discount){
 									                        @endphp
@@ -84,7 +85,7 @@
 						</div>
 						<div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
 							<div class="agile_top_brands_grids">
-								@foreach($items as $item)
+								@foreach($todayoffers as $item)
 								<div class="col-md-4 top_brand_left" style="margin-bottom: 20px;">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
@@ -93,14 +94,15 @@
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
 															<a href="{{route('detailpage',$item->id)}}"><img title=" " alt=" " src="{{'storage/'.$item->photo}}" style="height: 100px;" /></a>		
-															<p>{{$item->name}}</p>
-															<div class="stars">
+															<p style="height: 80px;">{{$item->name}}</p>
+															{{-- <div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
 																<i class="fa fa-star gray-star" aria-hidden="true"></i>
-															</div>
+															</div> --}}
+															<h4 class="stars"><i class="fa fa-star blue-star" aria-hidden="true"></i> {{$item->rate}}/10 </h4>
 															@php
 									                          if($item->discount){
 									                        @endphp
@@ -149,4 +151,7 @@
 		</div>
 	</div>
 <!-- //top-brands -->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection

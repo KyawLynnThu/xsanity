@@ -292,7 +292,7 @@
                   <p>Order List</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inline</p>
@@ -303,7 +303,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>uPlot</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
          {{--  <li class="nav-item">
@@ -401,9 +401,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0
+     
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2021 Xsanity.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

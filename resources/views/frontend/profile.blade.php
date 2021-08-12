@@ -40,13 +40,16 @@
                 <br><br>
 
                 <a href="{{route('user.edit',Auth::user()->id)}}
-                    " class="btn btn-default"> Update My Profile</a>
+                    " class="btn btn-default search" style="background-color: #EC7063; color: white;"><i class="fa fa-edit"></i> Update My Profile</a>
              
                    
                 </div>
         </div>
     </div>
 <!-- //register -->
+@endsection
+@section('script')
+<script type="text/javascript" src="{{asset('frontend_assets/js/custom.js')}}"></script>
 @endsection
 
 
