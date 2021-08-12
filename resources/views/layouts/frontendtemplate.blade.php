@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="nav navbar-nav">
 									<li class="active"><a href="{{route('homepage')}}" class="act">Home</a></li>	
 									<!-- Mega Menu -->
-									@foreach($categories as $category)
+									{{-- @foreach($categories as $category)
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{$category->name}}<b class="caret"></b></a>
 										<ul class="dropdown-menu multi-column columns-3">
@@ -177,7 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</div>
 										</ul>
 									</li>
-									@endforeach								
+									@endforeach			 --}}					
 														
 									<li><a href="{{route('offerpage')}}">Offers</a></li>
 									<li><a href="{{route('contactpage')}}">Contact</a></li>

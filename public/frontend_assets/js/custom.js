@@ -37,24 +37,24 @@ $(document).ready(function(){
   getData();
 
   function count(argument) {
-    var mycartjson = localStorage.getItem('mycart');
+    		var mycartjson=localStorage.getItem("mycart");
 			if (mycartjson){
 			var mycartarray=JSON.parse(mycartjson);
 			var count=0;
 			var total=0;
-			for(item of mycartarray){
-						var unitprice = item.price;
-						var discount = item.discount;
-						var qty = item.qty;
+			$.each(mycartarray,function(i,v){
+						var unitprice = v.price;
+						var discount = v.discount;
+						var qty = v.qty;
 						if (discount) {
 							var price = discount;
 						}else{
 							var price = unitprice;
 						}
-						var amount=item.qty*item.price;
+						var amount=qty*price;
 
 						count += qty ++;
-						total += amount ++;}
+						total += amount ++;})
 	
 					$('.count').html(count);
 					$('.cartTotal').html(total+'Ks');
@@ -71,51 +71,40 @@ $(document).ready(function(){
     var ul="";
     var j=1;
     var total = 0;
-    var delivery = 1500;
 
     if (mycartjson) {
       mycartarray = JSON.parse(mycartjson);
 
-      for(item of mycartarray){
-        var unitprice = item.price;
-			var discount = item.discount;
+      $.each(mycartarray,function(i,v){
+        var unitprice = v.price;
+			var discount = v.discount;
 			if (discount) {
 				var price = discount;
 			}else{
 				var price = unitprice;
 			}
-			total += (item.qty*price);
+			total += (v.qty*price);
         html+= `<tr class="rem1">
         				<td class="invert">
 							<div class="rem">
-						 	<div class="close1"> </div>
+						 	<div class="close1" data-key="${i}"></div>
 							</div>
 							
 						</td>
 						<td class="invert">${j++}</td>
-						<td class="invert-image"><img src="${item.photo}" style="width: 130px; height: 90px;" alt="photo" class="img-responsive" /></td>
-						<td class="invert">${item.name}</td>
+						<td class="invert-image"><img src="${v.photo}" style="width: 130px; height: 90px;" alt="photo" class="img-responsive" /></td>
+						<td class="invert">${v.name}</td>
 						<td class="invert">
 							 <div class="quantity"> 
 								<div class="quantity-select">                           
-									<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value"><span>${item.qty}</span></div>
-									<div class="entry value-plus active">&nbsp;</div>
+									<div class="entry value-minus" data-key="${i}">&nbsp;</div>
+									<div class="entry value"><span>${v.qty}</span></div>
+									<div class="entry value-plus active" data-key="${i}">&nbsp;</div>
 								</div>
 							</div>
 						</td>
 
-						<script>
-						$('.value-plus').on('click', function(){
-							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
-							divUpd.text(newVal);
-						});
-
-						$('.value-minus').on('click', function(){
-							var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
-							if(newVal>=1) divUpd.text(newVal);
-						});
-					</script>`
+						`
 						
 						if (discount > 0) {
 						html+=`<td><p class="item-price">
@@ -132,12 +121,12 @@ $(document).ready(function(){
 		                       </p></td>`;
 		                       }
 						html+=`
-						<td class="invert">${(item.qty*price)}</td>
+						<td class="invert">${(v.qty*price)}</td>
 
 
 					</tr>
 					`;
-      }
+      })
 
       // html += `<tr>
       //           <td colspan="6"><h4>Total :</h4> </td>
@@ -155,7 +144,7 @@ $(document).ready(function(){
 
     
 
-    amount= total+delivery;
+    amount= total++;
     //var mycartarray = JSON.parse(mycartjson);
     if (mycartjson) {
     for(item of mycartarray){
@@ -169,13 +158,11 @@ $(document).ready(function(){
 				total += (item.qty*price);
 
     ul+=`<ul>
-				<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>
-						
-		`
+				<li>${item.name} <i>-</i> <span>${(item.qty*price)}Ks </span></li>`
     
   }
 
-  ul+=`<ul><li>Delivery Service Charges <i>-</i> <span>1500Ks</span></li>
+  ul+=`<ul>
 						<li><strong>Total <i>-</i> <span>${amount} Ks</span></strong></li>
 						</ul>`;
 					}
@@ -185,7 +172,76 @@ $(document).ready(function(){
     }
   $('#product').html(ul);
   $('#tbody').html(html);
+
+  //remove process
+  $('.close1').click(function(){
+				var key=$(this).data('key');
+				var mycartjson=localStorage.getItem('mycart');
+				if (mycartjson){
+					var mycartarray=JSON.parse(mycartjson);
+
+					$.each(mycartarray,function(i,v){
+						if (key==i){
+							
+							
+								mycartarray.splice(key,1);
+							}
+						}
+					)
+
+					var cartData=JSON.stringify(mycartarray);
+					localStorage.setItem('mycart', cartData);
+						getData();
+						count();
+				}
+			})
+
+  	//minus quantity
+  	$('.value-minus').click(function(){
+				var key=$(this).data('key');
+				var mycartjson=localStorage.getItem('mycart');
+				if (mycartjson){
+					var mycartarray=JSON.parse(mycartjson);
+
+					$.each(mycartarray,function(i,v){
+						if (key==i){
+							v.qty--;
+							if (v.qty==0){
+							mycartarray.splice(key,1);
+							}
+						}
+					})
+
+					var cartData=JSON.stringify(mycartarray);
+					localStorage.setItem('mycart', cartData);
+						getData();
+						count();
+				}
+			})
+
+
+  	//plus quantity
+  	$('.value-plus').click(function(){
+				var key=$(this).data('key');
+				var mycartjson=localStorage.getItem('mycart');
+				if (mycartjson){
+					var mycartarray=JSON.parse(mycartjson);
+					$.each(mycartarray,function(i,v){
+						if (key==i){
+							v.qty++;
+						}
+						var cartData=JSON.stringify(mycartarray);
+						localStorage.setItem('mycart', cartData);
+						getData();
+						count();
+					})
+				}
+			})
+
+
   }
+
+ 
 
   // checkout process
   $('.checkout').click(function(){
@@ -196,7 +252,7 @@ $(document).ready(function(){
     });
     var mycartjson = localStorage.getItem('mycart');
     var total = $(this).data('total');
-    console.log(mycartjson);
+    //console.log(mycartjson);
     $.post("order-management/order",{data:mycartjson,total:total},function(res){
       console.log(res);
       // remove ls
@@ -211,6 +267,9 @@ $(document).ready(function(){
   	text: 'Your Order is Complete.',
   	footer: '<a href="">Your Order will be delivered in 3 days.</a>'
 	})
+
+	$('.count').html(0);
+	$('.cartTotal').html(0+'Ks');
 
     })
   })

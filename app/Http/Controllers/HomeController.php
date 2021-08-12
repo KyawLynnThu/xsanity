@@ -30,6 +30,9 @@ class HomeController extends Controller
         if ($roles[0] == 'admin') {
             return redirect()->route('category.index');
         }else{
+            // if (condition) {
+            //     Redirect::intended('cartpage');
+            // }
             return redirect()->route('homepage');
             // $this->showLoginForm();
         }
