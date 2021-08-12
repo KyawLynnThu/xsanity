@@ -27,12 +27,31 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              {{-- <div class="card-header">
+              <div class="card-header">
                 <h3 class="card-title">DataTable with Order List</h3>
-                <a href="{{route('category.create')}}" class="btn btn-info float-right"><i class="fas fa-plus"></i></a>
-              </div> --}}
+                <h3 class="card-title float-sm-right">Total: </h3>
+              </div> 
               <!-- /.card-header -->
               <div class="card-body">
+                   <form action="{{route('order.index')}}" method="post" class="row">
+                     @csrf
+                    @method('GET')
+                                <input type="hidden" name="search" value="search" >
+                                <div class="form-group col-md-5">
+                                   <label class="control-label">Start Date</label> 
+                                   <input class="form-control" type="date" name="startDate">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label class="control-label">End Date</label> 
+                                   <input class="form-control" type="date" name="endDate">
+                                </div>
+                                <div class="form-group col-md-2 align-self-end">
+                                    <button class="btn btn-primary  btn-block" type="submit"> Search
+                                        <i class="icofont-search-2"></i>
+                                    </button>
+                                </div>
+                                
+                            </form>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
