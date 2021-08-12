@@ -43,6 +43,7 @@ class ItemController extends Controller
         $request->validate([
             "name" => "required|unique:categories|max:191|min:5",
             "code" => "required",
+            "rate" => "required|integer|between: 0,5",
             "photo" => "required|mimes:jpeg,jpg,png",
             "rate"=> "integer|between:0,5",
             "price" => "required",
@@ -128,6 +129,7 @@ class ItemController extends Controller
        $request->validate([
             "name" => "required|unique:categories|max:191|min:5",
             "code" => "required",
+            "rate" => "required|integer|between: 0,5",
             "photo" => "required|mimes:jpeg,jpg,png",
             "price" => "required",
             "rate"=> "integer|between:0,5",
